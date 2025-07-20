@@ -204,12 +204,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             <p className="text-lg text-muted-foreground mb-2">{boat.type}</p>
             <p className="text-base text-muted-foreground">Available for hire in Sydney</p>
           </div>
-          <div className="text-right">
-            <div className="flex items-center space-x-2 mb-2">
-              <DollarSign className="h-5 w-5 text-gold" />
-              <span className="text-xl font-bold text-primary">{boat.hourlyRate}</span>
-            </div>
-          </div>
         </div>
       </div>
 
