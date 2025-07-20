@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -79,9 +80,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             <h3 className="font-serif text-xl font-bold text-primary">{boat.name}</h3>
             <p className="text-sm text-muted-foreground">{boat.type}</p>
           </div>
-          <div className="text-right">
-            <span className="text-lg font-bold text-primary">{boat.hourlyRate.replace('From ', '')}</span>
-          </div>
         </div>
       </div>
 
@@ -105,30 +103,13 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       </div>
 
       {/* Mobile Information Tabs */}
-      {(boat.amenities || boat.seasonalPricing || boat.specifications || boat.recreationExtras) && (
-        <Tabs defaultValue="amenities" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 h-10">
-            {boat.amenities && <TabsTrigger value="amenities" className="text-xs">Amenities</TabsTrigger>}
+      {(boat.seasonalPricing || boat.amenities || boat.recreationExtras) && (
+        <Tabs defaultValue="pricing" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 h-10">
             {boat.seasonalPricing && <TabsTrigger value="pricing" className="text-xs">Pricing</TabsTrigger>}
-            {boat.specifications && <TabsTrigger value="specs" className="text-xs">Specs</TabsTrigger>}
+            {boat.amenities && <TabsTrigger value="amenities" className="text-xs">Amenities</TabsTrigger>}
             {boat.recreationExtras && <TabsTrigger value="extras" className="text-xs">Extras</TabsTrigger>}
           </TabsList>
-          
-          {boat.amenities && (
-            <TabsContent value="amenities" className="mt-3">
-              <div className="grid grid-cols-2 gap-1">
-                {boat.amenities.map((amenity, index) => {
-                  const IconComponent = amenity.icon;
-                  return (
-                    <div key={index} className="flex items-center space-x-1.5 p-1.5 rounded-lg hover:bg-muted/50 transition-colors">
-                      <IconComponent className="h-3 w-3 text-gold flex-shrink-0" />
-                      <span className="text-foreground text-xs">{amenity.name}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-          )}
           
           {boat.seasonalPricing && (
             <TabsContent value="pricing" className="mt-4">
@@ -146,15 +127,18 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             </TabsContent>
           )}
           
-          {boat.specifications && (
-            <TabsContent value="specs" className="mt-4">
-              <div className="space-y-2">
-                {Object.entries(boat.specifications).map(([spec, value], index) => (
-                  <div key={index} className="flex justify-between items-center py-2 px-3 border border-border/50 rounded-lg">
-                    <span className="text-foreground font-medium capitalize text-xs">{spec.replace(/([A-Z])/g, ' $1')}</span>
-                    <span className="text-sm font-semibold text-primary">{value}</span>
-                  </div>
-                ))}
+          {boat.amenities && (
+            <TabsContent value="amenities" className="mt-3">
+              <div className="grid grid-cols-2 gap-1">
+                {boat.amenities.map((amenity, index) => {
+                  const IconComponent = amenity.icon;
+                  return (
+                    <div key={index} className="flex items-center space-x-1.5 p-1.5 rounded-lg hover:bg-muted/50 transition-colors">
+                      <IconComponent className="h-3 w-3 text-gold flex-shrink-0" />
+                      <span className="text-foreground text-xs">{amenity.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             </TabsContent>
           )}
@@ -177,13 +161,15 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       {/* Compact Booking Actions */}
       <div className="space-y-3 pt-4 border-t border-border">
         <div className="grid grid-cols-2 gap-2">
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-10 text-sm">
-            <Phone className="w-3 h-3 mr-1" />
-            Call
-          </Button>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-10 text-sm">
+          <a href="tel:+61401494414">
+            <Button className="w-full bg-green-600 hover:bg-green-700 text-white h-10 text-sm">
+              <Phone className="w-3 h-3 mr-1" />
+              Call
+            </Button>
+          </a>
+          <Button className="bg-blue-900 hover:bg-blue-800 text-white h-10 text-sm">
             <Calendar className="w-3 h-3 mr-1" />
-            Check
+            Instant Quote
           </Button>
         </div>
       </div>
@@ -268,30 +254,13 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       </div>
 
       {/* Enhanced Information Tabs */}
-      {(boat.amenities || boat.seasonalPricing || boat.specifications || boat.recreationExtras) && (
-        <Tabs defaultValue="amenities" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 h-12">
-            {boat.amenities && <TabsTrigger value="amenities" className="text-sm">Amenities</TabsTrigger>}
+      {(boat.seasonalPricing || boat.amenities || boat.recreationExtras) && (
+        <Tabs defaultValue="pricing" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 h-12">
             {boat.seasonalPricing && <TabsTrigger value="pricing" className="text-sm">Pricing</TabsTrigger>}
-            {boat.specifications && <TabsTrigger value="specs" className="text-sm">Specs</TabsTrigger>}
+            {boat.amenities && <TabsTrigger value="amenities" className="text-sm">Amenities</TabsTrigger>}
             {boat.recreationExtras && <TabsTrigger value="extras" className="text-sm">Extras</TabsTrigger>}
           </TabsList>
-          
-          {boat.amenities && (
-            <TabsContent value="amenities" className="mt-6">
-              <div className="grid grid-cols-3 gap-3">
-                {boat.amenities.map((amenity, index) => {
-                  const IconComponent = amenity.icon;
-                  return (
-                    <div key={index} className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                      <IconComponent className="h-4 w-4 text-gold flex-shrink-0" />
-                      <span className="text-foreground text-sm">{amenity.name}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </TabsContent>
-          )}
           
           {boat.seasonalPricing && (
             <TabsContent value="pricing" className="mt-6">
@@ -309,15 +278,18 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             </TabsContent>
           )}
           
-          {boat.specifications && (
-            <TabsContent value="specs" className="mt-6">
-              <div className="space-y-4">
-                {Object.entries(boat.specifications).map(([spec, value], index) => (
-                  <div key={index} className="flex justify-between items-center py-3 px-4 border border-border/50 rounded-lg">
-                    <span className="text-foreground font-medium capitalize">{spec.replace(/([A-Z])/g, ' $1')}</span>
-                    <span className="text-lg font-semibold text-primary">{value}</span>
-                  </div>
-                ))}
+          {boat.amenities && (
+            <TabsContent value="amenities" className="mt-6">
+              <div className="grid grid-cols-3 gap-3">
+                {boat.amenities.map((amenity, index) => {
+                  const IconComponent = amenity.icon;
+                  return (
+                    <div key={index} className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                      <IconComponent className="h-4 w-4 text-gold flex-shrink-0" />
+                      <span className="text-foreground text-sm">{amenity.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             </TabsContent>
           )}
@@ -340,13 +312,15 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       {/* Enhanced Booking Actions */}
       <div className="space-y-4 pt-6 border-t border-border">
         <div className="grid grid-cols-2 gap-4">
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-12 font-semibold">
-            <Phone className="w-4 h-4 mr-2" />
-            Call Now
-          </Button>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-12 font-semibold">
+          <a href="tel:+61401494414">
+            <Button className="w-full bg-green-600 hover:bg-green-700 text-white h-12 font-semibold">
+              <Phone className="w-4 h-4 mr-2" />
+              Call Now
+            </Button>
+          </a>
+          <Button className="bg-blue-900 hover:bg-blue-800 text-white h-12 font-semibold">
             <Calendar className="w-4 h-4 mr-2" />
-            Check Availability
+            Instant Quote
           </Button>
         </div>
       </div>
