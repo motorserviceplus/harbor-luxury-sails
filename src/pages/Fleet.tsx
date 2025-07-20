@@ -1,53 +1,43 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Users, Waves, Calendar, Star } from 'lucide-react';
+import { Users, Waves, Calendar, Star, Clock, DollarSign, MessageCircle } from 'lucide-react';
 import yachtFleetImage from '@/assets/yacht-fleet.jpg';
 import yachtInteriorImage from '@/assets/yacht-interior.jpg';
 
 const Fleet = () => {
   const boats = [
     {
-      name: 'Harbour Princess',
+      name: 'Seven Star',
       type: 'Luxury Motor Yacht',
-      capacity: '12 Guests',
-      length: '65 feet',
-      features: ['Premium bar', 'Sound system', 'Sun deck', 'Air conditioning'],
-      description: 'Our flagship vessel combining elegance with comfort for unforgettable Sydney Harbour experiences.',
+      capacity: '1-80 Guests',
+      length: '98 feet',
+      hourlyRate: '$2000/hr',
+      features: ['Water slide', 'Multiple decks', 'Premium bar', 'Entertainment system', 'Air conditioning', 'Sun deck'],
+      description: 'Our flagship vessel featuring an exciting water slide and multiple entertainment areas, perfect for large celebrations and unforgettable Sydney Harbour experiences.',
       image: yachtFleetImage,
-      highlight: 'Most Popular'
+      highlight: 'Featured Yacht'
     },
     {
-      name: 'Sydney Sovereign',
-      type: 'Executive Cruiser',
-      capacity: '8 Guests',
-      length: '55 feet',
-      features: ['Gourmet galley', 'Wine cellar', 'Panoramic windows', 'Wifi'],
-      description: 'Perfect for intimate gatherings and corporate events with sophisticated styling.',
+      name: 'Privacy',
+      type: 'Performance Luxury Yacht',
+      capacity: '1-36 Guests',
+      length: '87 feet',
+      hourlyRate: '$1650/hr',
+      features: ['High-speed performance', 'Sleek interior', 'Premium sound system', 'Air conditioning', 'Modern galley', 'Panoramic windows'],
+      description: 'A sophisticated performance yacht combining speed with luxury, ideal for intimate gatherings and corporate events with contemporary styling.',
       image: yachtInteriorImage,
-      highlight: 'Premium Choice'
-    },
-    {
-      name: 'Opera Pearl',
-      type: 'Sailing Yacht',
-      capacity: '10 Guests',
-      length: '60 feet',
-      features: ['Classic sailing', 'Spacious cockpit', 'Traditional charm', 'Modern amenities'],
-      description: 'Experience the romance of sailing with modern luxury and breathtaking harbour views.',
-      image: yachtFleetImage,
-      highlight: 'Romantic Option'
-    },
-    {
-      name: 'Bridge Majesty',
-      type: 'Super Yacht',
-      capacity: '16 Guests',
-      length: '80 feet',
-      features: ['Multiple decks', 'Jacuzzi', 'Chef kitchen', 'Entertainment system'],
-      description: 'Our largest vessel for grand celebrations and corporate events.',
-      image: yachtInteriorImage,
-      highlight: 'Ultimate Luxury'
+      highlight: 'Performance Choice'
     }
   ];
+
+  const handleWhatsAppBooking = (boatName: string) => {
+    const message = `Hi! I'm interested in booking the ${boatName} for a charter. Could you please provide more details about availability and packages?`;
+    const phoneNumber = '61400000000'; // Replace with actual WhatsApp business number
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,6 +71,12 @@ const Fleet = () => {
                       {boat.highlight}
                     </Badge>
                   </div>
+                  <div className="absolute top-4 right-4">
+                    <Badge className="bg-primary/90 text-primary-foreground font-semibold">
+                      <DollarSign className="w-3 h-3 mr-1" />
+                      {boat.hourlyRate}
+                    </Badge>
+                  </div>
                 </div>
                 
                 <CardContent className="p-8">
@@ -107,6 +103,10 @@ const Fleet = () => {
                       <Waves className="h-5 w-5 text-gold" />
                       <span className="font-sans text-sm text-muted-foreground">{boat.length}</span>
                     </div>
+                    <div className="flex items-center space-x-2 col-span-2">
+                      <Clock className="h-5 w-5 text-gold" />
+                      <span className="font-sans text-sm text-muted-foreground">Starting from {boat.hourlyRate}</span>
+                    </div>
                   </div>
 
                   <div className="mb-6">
@@ -121,10 +121,22 @@ const Fleet = () => {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-primary hover:bg-primary-light text-primary-foreground font-semibold">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Book This Vessel
-                  </Button>
+                  <div className="space-y-3">
+                    <Button 
+                      className="w-full bg-primary hover:bg-primary-light text-primary-foreground font-semibold"
+                      onClick={() => handleWhatsAppBooking(boat.name)}
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Book by WhatsApp
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-primary text-primary hover:bg-primary/5 font-semibold"
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Check Availability
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -139,10 +151,14 @@ const Fleet = () => {
             Need Help Choosing?
           </h2>
           <p className="font-sans text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Our experienced team can recommend the perfect vessel for your occasion
+            Our experienced team can recommend the perfect vessel for your occasion and help you plan the ultimate Sydney Harbour experience.
           </p>
-          <Button className="bg-gold hover:bg-gold-light text-primary font-semibold px-8 py-3 text-lg">
-            Speak with Our Team
+          <Button 
+            className="bg-gold hover:bg-gold-light text-primary font-semibold px-8 py-3 text-lg"
+            onClick={() => handleWhatsAppBooking('fleet consultation')}
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Chat with Our Team
           </Button>
         </div>
       </section>
