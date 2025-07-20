@@ -1,10 +1,11 @@
-
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Users, Waves, Calendar, Star, Clock, DollarSign, MessageCircle, Wifi, Car, Utensils, Music, Bed, Bath, Sparkles, Anchor } from 'lucide-react';
+import { Users, Waves, DollarSign, MessageCircle, Eye } from 'lucide-react';
+import { Bath, Utensils, Sparkles, Bed, Music, Star } from 'lucide-react';
+import BoatDetailsModal from '@/components/BoatDetailsModal';
 import sevenStarMain from '@/assets/seven-star-main.jpg';
 import sevenStar1 from '@/assets/seven-star-1.jpg';
 import sevenStar4 from '@/assets/seven-star-4.jpg';
@@ -19,6 +20,9 @@ import sevenStar21 from '@/assets/seven-star-21.jpg';
 import yachtInteriorImage from '@/assets/yacht-interior.jpg';
 
 const Fleet = () => {
+  const [selectedBoat, setSelectedBoat] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const boats = [
     {
       name: 'Seven Star',
@@ -89,13 +93,12 @@ const Fleet = () => {
       capacity: '1-36 Guests',
       length: '87 feet',
       hourlyRate: '$1650/hr',
-      features: ['High-speed performance', 'Sleek interior', 'Premium sound system', 'Air conditioning', 'Modern galley', 'Panoramic windows'],
       description: 'A sophisticated performance yacht combining speed with luxury, ideal for intimate gatherings and corporate events with contemporary styling.',
       images: [
         yachtInteriorImage,
-        'https://images.unsplash.com/photo-1593113616828-6f22bdd62e63?w=800&q=80', // Modern yacht interior
-        'https://images.unsplash.com/photo-1541013064736-c026a50b4269?w=800&q=80', // Yacht exterior at sea
-        'https://images.unsplash.com/photo-1567449303183-8a5aa7c62fdb?w=800&q=80', // Yacht deck area
+        'https://images.unsplash.com/photo-1593113616828-6f22bdd62e63?w=800&q=80',
+        'https://images.unsplash.com/photo-1541013064736-c026a50b4269?w=800&q=80',
+        'https://images.unsplash.com/photo-1567449303183-8a5aa7c62fdb?w=800&q=80',
       ],
       highlight: 'Performance Choice'
     }
@@ -103,9 +106,14 @@ const Fleet = () => {
 
   const handleWhatsAppBooking = (boatName: string) => {
     const message = `Hi! I'm interested in booking the ${boatName} for a charter. Could you please provide more details about availability and packages?`;
-    const phoneNumber = '61400000000'; // Replace with actual WhatsApp business number
+    const phoneNumber = '61400000000';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleViewDetails = (boat: any) => {
+    setSelectedBoat(boat);
+    setIsModalOpen(true);
   };
 
   return (
@@ -123,34 +131,26 @@ const Fleet = () => {
         </div>
       </section>
 
-      {/* Fleet Grid */}
+      {/* Simplified Fleet Grid */}
       <section className="pb-20 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {boats.map((boat, index) => (
               <Card key={index} className="overflow-hidden group hover:shadow-luxury transition-all duration-300">
                 <div className="relative">
-                  <Carousel className="w-full">
-                    <CarouselContent>
-                      {boat.images.map((image, imageIndex) => (
-                        <CarouselItem key={imageIndex}>
-                          <img 
-                            src={image} 
-                            alt={`${boat.name} - View ${imageIndex + 1}`}
-                            className="w-full h-64 object-cover"
-                          />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
-                  </Carousel>
+                  <img 
+                    src={boat.images[0]} 
+                    alt={boat.name}
+                    className="w-full h-64 object-cover"
+                  />
                   
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-gold text-primary font-semibold">
-                      {boat.highlight}
-                    </Badge>
-                  </div>
+                  {boat.highlight && (
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-gold text-primary font-semibold">
+                        {boat.highlight}
+                      </Badge>
+                    </div>
+                  )}
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-primary/90 text-primary-foreground font-semibold">
                       <DollarSign className="w-3 h-3 mr-1" />
@@ -159,114 +159,33 @@ const Fleet = () => {
                   </div>
                 </div>
                 
-                <CardContent className="p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="font-serif text-2xl font-semibold text-primary mb-2">
-                        {boat.name}
-                      </h3>
-                      <p className="font-sans text-muted-foreground mb-1">{boat.type}</p>
-                      {boat.make && boat.model && (
-                        <p className="font-sans text-xs text-muted-foreground">{boat.make} {boat.model}</p>
-                      )}
-                    </div>
-                    <Star className="h-6 w-6 text-gold" />
+                <CardContent className="p-6">
+                  <div className="mb-4">
+                    <h3 className="font-serif text-2xl font-semibold text-primary mb-2">
+                      {boat.name}
+                    </h3>
+                    <p className="font-sans text-muted-foreground mb-1">{boat.type}</p>
+                    <p className="font-sans text-sm text-muted-foreground">Hire in Sydney</p>
                   </div>
 
-                  <p className="font-sans text-foreground mb-6">
-                    {boat.description}
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="flex items-center space-x-2">
-                      <Users className="h-5 w-5 text-gold" />
+                      <Users className="h-4 w-4 text-gold" />
                       <span className="font-sans text-sm text-muted-foreground">{boat.capacity}</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Waves className="h-5 w-5 text-gold" />
+                      <Waves className="h-4 w-4 text-gold" />
                       <span className="font-sans text-sm text-muted-foreground">{boat.length}</span>
                     </div>
-                    <div className="flex items-center space-x-2 col-span-2">
-                      <Clock className="h-5 w-5 text-gold" />
-                      <span className="font-sans text-sm text-muted-foreground">{boat.hourlyRate}</span>
+                    <div className="flex items-center space-x-2">
+                      <DollarSign className="h-4 w-4 text-gold" />
+                      <span className="font-sans text-sm text-muted-foreground">From {boat.hourlyRate.replace('From ', '')}</span>
                     </div>
                   </div>
 
-                  {/* Enhanced content for Seven Star */}
-                  {boat.amenities ? (
-                    <Tabs defaultValue="amenities" className="mb-6">
-                      <TabsList className="grid w-full grid-cols-4">
-                        <TabsTrigger value="amenities">Amenities</TabsTrigger>
-                        <TabsTrigger value="pricing">Pricing</TabsTrigger>
-                        <TabsTrigger value="specs">Specs</TabsTrigger>
-                        <TabsTrigger value="extras">Extras</TabsTrigger>
-                      </TabsList>
-                      
-                      <TabsContent value="amenities" className="mt-4">
-                        <div className="grid grid-cols-2 gap-3">
-                          {boat.amenities.map((amenity, amenityIndex) => {
-                            const IconComponent = amenity.icon;
-                            return (
-                              <div key={amenityIndex} className="flex items-center space-x-2">
-                                <IconComponent className="h-4 w-4 text-gold" />
-                                <span className="font-sans text-sm text-muted-foreground">{amenity.name}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="pricing" className="mt-4">
-                        <div className="space-y-3">
-                          <h5 className="font-sans font-semibold text-primary">Seasonal Pricing</h5>
-                          {boat.seasonalPricing && Object.entries(boat.seasonalPricing).map(([season, price], priceIndex) => (
-                            <div key={priceIndex} className="flex justify-between items-center py-2 border-b border-border/50">
-                              <span className="font-sans text-sm text-muted-foreground">{season}</span>
-                              <span className="font-sans text-sm font-semibold text-primary">{price}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="specs" className="mt-4">
-                        <div className="space-y-3">
-                          {boat.specifications && Object.entries(boat.specifications).map(([spec, value], specIndex) => (
-                            <div key={specIndex} className="flex justify-between items-center py-2 border-b border-border/50">
-                              <span className="font-sans text-sm text-muted-foreground capitalize">{spec.replace(/([A-Z])/g, ' $1')}</span>
-                              <span className="font-sans text-sm font-semibold text-primary">{value}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </TabsContent>
-                      
-                      <TabsContent value="extras" className="mt-4">
-                        <div className="grid grid-cols-2 gap-2">
-                          {boat.recreationExtras && boat.recreationExtras.map((extra, extraIndex) => (
-                            <div key={extraIndex} className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-gold rounded-full"></div>
-                              <span className="font-sans text-sm text-muted-foreground">{extra}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </TabsContent>
-                    </Tabs>
-                  ) : (
-                    <div className="mb-6">
-                      <h4 className="font-sans font-semibold text-primary mb-3">Features</h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        {boat.features && boat.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-gold rounded-full"></div>
-                            <span className="font-sans text-sm text-muted-foreground">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
                   <div className="space-y-3">
                     <Button 
-                      className="w-full bg-primary hover:bg-primary-light text-primary-foreground font-semibold"
+                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
                       onClick={() => handleWhatsAppBooking(boat.name)}
                     >
                       <MessageCircle className="w-4 h-4 mr-2" />
@@ -275,9 +194,10 @@ const Fleet = () => {
                     <Button 
                       variant="outline" 
                       className="w-full border-primary text-primary hover:bg-primary/5 font-semibold"
+                      onClick={() => handleViewDetails(boat)}
                     >
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Check Availability
+                      <Eye className="w-4 h-4 mr-2" />
+                      View Details
                     </Button>
                   </div>
                 </CardContent>
@@ -305,6 +225,13 @@ const Fleet = () => {
           </Button>
         </div>
       </section>
+
+      {/* Modal */}
+      <BoatDetailsModal 
+        boat={selectedBoat}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };
