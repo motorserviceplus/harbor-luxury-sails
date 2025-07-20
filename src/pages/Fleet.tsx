@@ -3,7 +3,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Users, Waves, DollarSign, Eye, SlidersHorizontal } from 'lucide-react';
 import { Bath, Utensils, Sparkles, Bed, Music, Star, Wind } from 'lucide-react';
@@ -24,7 +23,6 @@ const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sortCheapestFirst, setSortCheapestFirst] = useState(false);
-  const [maxGuestsFilter, setMaxGuestsFilter] = useState('all');
 
   const boats = [
     {
@@ -145,24 +143,12 @@ const Fleet = () => {
     return match ? parseInt(match[1].replace(/,/g, '')) : 0;
   };
 
-  // Extract maximum capacity from capacity string
-  const extractMaxCapacity = (capacityString: string): number => {
-    const match = capacityString.match(/(\d+)\s*Guests?$/i);
-    return match ? parseInt(match[1]) : 0;
-  };
-
   // Filter and sort boats based on current filters
   const filteredAndSortedBoats = useMemo(() => {
-    let filtered = [...boats];
-
-    // Apply guests filter
-    if (maxGuestsFilter !== 'all') {
-      const maxGuests = parseInt(maxGuestsFilter);
-      filtered = filtered.filter(boat => extractMaxCapacity(boat.capacity) <= maxGuests);
-    }
+    let sorted = [...boats];
 
     // Apply price sorting
-    filtered.sort((a, b) => {
+    sorted.sort((a, b) => {
       const priceA = extractPrice(a.hourlyRate);
       const priceB = extractPrice(b.hourlyRate);
       
@@ -173,8 +159,8 @@ const Fleet = () => {
       }
     });
 
-    return filtered;
-  }, [boats, sortCheapestFirst, maxGuestsFilter]);
+    return sorted;
+  }, [boats, sortCheapestFirst]);
 
   const handleViewDetails = (boat: any) => {
     setSelectedBoat(boat);
@@ -205,42 +191,16 @@ const Fleet = () => {
               <h3 className="font-serif text-lg font-semibold text-primary">Filter & Sort</h3>
             </div>
             
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-              {/* Price Sorting Toggle */}
-              <div className="flex items-center space-x-3">
-                <Switch
-                  id="price-sort"
-                  checked={sortCheapestFirst}
-                  onCheckedChange={setSortCheapestFirst}
-                />
-                <label htmlFor="price-sort" className="font-sans text-sm font-medium">
-                  Sort by Price: Cheapest to Highest
-                </label>
-              </div>
-
-              {/* Max Guests Filter */}
-              <div className="flex flex-col md:flex-row md:items-center gap-3">
-                <span className="font-sans text-sm font-medium">Max Guests:</span>
-                <ToggleGroup 
-                  type="single" 
-                  value={maxGuestsFilter} 
-                  onValueChange={(value) => setMaxGuestsFilter(value || 'all')}
-                  className="justify-start"
-                >
-                  <ToggleGroupItem value="all" variant="outline" size="sm">
-                    All
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="20" variant="outline" size="sm">
-                    ≤20
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="40" variant="outline" size="sm">
-                    ≤40
-                  </ToggleGroupItem>
-                  <ToggleGroupItem value="80" variant="outline" size="sm">
-                    ≤80
-                  </ToggleGroupItem>
-                </ToggleGroup>
-              </div>
+            {/* Price Sorting Toggle */}
+            <div className="flex items-center space-x-3">
+              <Switch
+                id="price-sort"
+                checked={sortCheapestFirst}
+                onCheckedChange={setSortCheapestFirst}
+              />
+              <label htmlFor="price-sort" className="font-sans text-sm font-medium">
+                Sort by Price: Cheapest to Highest
+              </label>
             </div>
           </div>
         </div>
