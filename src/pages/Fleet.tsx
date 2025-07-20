@@ -166,7 +166,7 @@ const Fleet = () => {
                   <img 
                     src={boat.images[0]} 
                     alt={boat.name}
-                    className="w-full h-48 md:h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                    className="w-full h-56 md:h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity duration-200"
                     onClick={() => handleViewDetails(boat)}
                   />
                   
