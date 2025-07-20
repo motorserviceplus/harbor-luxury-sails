@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MessageCircle, Calendar, Users, Waves, Clock, DollarSign, Phone, Mail } from 'lucide-react';
-import { useMediaQuery } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Boat {
   name: string;
@@ -40,7 +40,7 @@ interface BoatDetailsModalProps {
 }
 
 const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClose }) => {
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useIsMobile();
 
   if (!boat) return null;
 
