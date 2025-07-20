@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Users, Waves, Calendar, Star, Clock, DollarSign, MessageCircle } from 'lucide-react';
-import yachtFleetImage from '@/assets/yacht-fleet.jpg';
+import sevenStarImage from '@/assets/seven-star-yacht.jpg';
 import yachtInteriorImage from '@/assets/yacht-interior.jpg';
 
 const Fleet = () => {
@@ -16,7 +16,7 @@ const Fleet = () => {
       hourlyRate: '$2000/hr',
       features: ['Water slide', 'Multiple decks', 'Premium bar', 'Entertainment system', 'Air conditioning', 'Sun deck'],
       description: 'Our flagship vessel featuring an exciting water slide and multiple entertainment areas, perfect for large celebrations and unforgettable Sydney Harbour experiences.',
-      image: yachtFleetImage,
+      image: sevenStarImage,
       highlight: 'Featured Yacht'
     },
     {
