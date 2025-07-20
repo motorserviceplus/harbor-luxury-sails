@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
@@ -256,7 +255,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             className="w-full border-green-600 text-green-600 hover:bg-green-50 h-12 font-semibold"
           >
             <Phone className="w-4 h-4 mr-2 text-green-600" />
-            Call Now
+            Call: +61 401 494 414
           </Button>
         </a>
         <Button 
