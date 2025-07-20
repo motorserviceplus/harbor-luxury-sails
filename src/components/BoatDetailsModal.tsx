@@ -201,7 +201,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <img 
                   src={image} 
                   alt={`${boat.name} - View ${index + 1}`}
-                  className="w-full h-64 object-cover rounded-xl"
+                  className="w-full h-80 object-cover rounded-xl"
                 />
               </CarouselItem>
             ))}
