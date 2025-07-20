@@ -125,7 +125,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <h5 className="font-semibold text-primary text-sm">Seasonal Pricing</h5>
                 <div className="space-y-2">
                   {Object.entries(boat.seasonalPricing).map(([season, price], index) => (
-                    <div key={index} className="flex justify-between items-center py-2 px-3 border border-border/50 rounded-lg">
+                    <div key={index} className="flex justify-between items-center py-2 px-3 bg-muted/10 hover:bg-muted/20 border border-border/50 rounded-lg transition-colors duration-200">
                       <span className="text-foreground font-medium text-xs">{season}</span>
                       <span className="text-sm font-bold text-primary">{price}</span>
                     </div>
@@ -277,7 +277,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <h5 className="font-semibold text-primary text-lg">Seasonal Pricing</h5>
                 <div className="space-y-3">
                   {Object.entries(boat.seasonalPricing).map(([season, price], index) => (
-                    <div key={index} className="flex justify-between items-center py-3 px-4 border border-border/50 rounded-lg">
+                    <div key={index} className="flex justify-between items-center py-3 px-4 bg-muted/10 hover:bg-muted/20 border border-border/50 rounded-lg transition-colors duration-200">
                       <span className="text-foreground font-medium">{season}</span>
                       <span className="text-lg font-bold text-primary">{price}</span>
                     </div>
