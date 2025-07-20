@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -136,7 +135,9 @@ const Fleet = () => {
                   <img 
                     src={boat.images[0]} 
                     alt={boat.name}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                    onClick={() => handleViewDetails(boat)}
+                    title={`View details for ${boat.name}`}
                   />
                   
                   {boat.highlight && (
