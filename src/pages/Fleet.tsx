@@ -145,12 +145,6 @@ const Fleet = () => {
                       </Badge>
                     </div>
                   )}
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-primary/90 text-primary-foreground font-semibold">
-                      <DollarSign className="w-4 h-4 mr-1" />
-                      {boat.hourlyRate}
-                    </Badge>
-                  </div>
                 </div>
                 
                 <CardContent className="p-6">
