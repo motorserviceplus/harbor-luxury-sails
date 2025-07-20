@@ -54,7 +54,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <img 
                   src={image} 
                   alt={`${boat.name} - View ${index + 1}`}
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full h-60 object-cover rounded-lg"
                 />
               </CarouselItem>
             ))}
@@ -72,12 +72,23 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         )}
       </div>
 
-      {/* Compact Header */}
+      {/* Compact Header with Buttons */}
       <div className="space-y-3">
         <div className="flex items-start justify-between">
-          <div>
+          <div className="flex-1 pr-3">
             <h3 className="font-serif text-xl font-bold text-primary">{boat.name}</h3>
             <p className="text-sm text-muted-foreground">{boat.type}</p>
+          </div>
+          <div className="flex items-center space-x-2 flex-shrink-0">
+            <a href="tel:+61401494414">
+              <Button className="bg-green-600 hover:bg-green-700 text-white h-10 w-10 rounded-full p-0">
+                <Phone className="w-4 h-4" />
+              </Button>
+            </a>
+            <Button className="bg-blue-900 hover:bg-blue-800 text-white h-10 px-3 text-xs">
+              <Calendar className="w-3 h-3 mr-1" />
+              Quote
+            </Button>
           </div>
         </div>
       </div>
@@ -154,21 +165,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           )}
         </Tabs>
       )}
-
-      <div className="space-y-3 pt-4 border-t border-border">
-        <div className="grid grid-cols-2 gap-2">
-          <a href="tel:+61401494414">
-            <Button className="w-full bg-green-600 hover:bg-green-700 text-white h-10 text-sm">
-              <Phone className="w-3 h-3 mr-1" />
-              Call
-            </Button>
-          </a>
-          <Button className="bg-blue-900 hover:bg-blue-800 text-white h-10 text-sm">
-            <Calendar className="w-3 h-3 mr-1" />
-            Instant Quote
-          </Button>
-        </div>
-      </div>
     </div>
   );
 
