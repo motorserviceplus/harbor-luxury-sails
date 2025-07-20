@@ -207,6 +207,26 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
+      {/* Action Buttons - Moved up */}
+      <div className="grid grid-cols-2 gap-4">
+        <a href="tel:+61401494414">
+          <Button 
+            variant="outline" 
+            className="w-full border-green-600 text-green-600 hover:bg-green-50 h-12 font-semibold"
+          >
+            <Phone className="w-4 h-4 mr-2 text-green-600" />
+            Call: 0401 494 414
+          </Button>
+        </a>
+        <Button 
+          variant="outline" 
+          className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 h-12 font-semibold"
+        >
+          <Calendar className="w-4 h-4 mr-2 text-blue-600" />
+          Instant Quote
+        </Button>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-muted/30 rounded-xl">
         <div className="flex items-center space-x-4">
           <div className="p-3 bg-gold/10 rounded-full">
@@ -235,26 +255,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             <p className="font-semibold text-foreground">{boat.hourlyRate}</p>
           </div>
         </div>
-      </div>
-
-      {/* Action Buttons - Moved here after stats */}
-      <div className="grid grid-cols-2 gap-4">
-        <a href="tel:+61401494414">
-          <Button 
-            variant="outline" 
-            className="w-full border-green-600 text-green-600 hover:bg-green-50 h-12 font-semibold"
-          >
-            <Phone className="w-4 h-4 mr-2 text-green-600" />
-            Call: 0401 494 414
-          </Button>
-        </a>
-        <Button 
-          variant="outline" 
-          className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 h-12 font-semibold"
-        >
-          <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-          Instant Quote
-        </Button>
       </div>
 
       {(boat.seasonalPricing || boat.amenities || boat.recreationExtras) && (
