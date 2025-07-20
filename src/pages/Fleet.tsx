@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -126,7 +125,7 @@ const Fleet = () => {
       </section>
 
       {/* Enhanced Fleet Grid */}
-      <section className="pb-20 px-2 md:px-4">
+      <section className="pb-20 px-1 md:px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {boats.map((boat, index) => (
@@ -148,7 +147,7 @@ const Fleet = () => {
                   )}
                 </div>
                 
-                <CardContent className="p-4 md:p-6">
+                <CardContent className="p-3 md:p-6">
                   <div className="mb-3 md:mb-4">
                     <h3 className="font-serif text-xl md:text-2xl font-semibold text-primary mb-2">
                       {boat.name}
@@ -157,16 +156,16 @@ const Fleet = () => {
                     <p className="font-sans text-sm text-muted-foreground">Hire in Sydney</p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 md:gap-6 mb-4">
-                    <div className="flex items-center space-x-2 md:space-x-3">
+                  <div className="grid grid-cols-3 gap-2 md:gap-6 mb-4">
+                    <div className="flex items-center space-x-1 md:space-x-3">
                       <Users className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
                       <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.capacity}</span>
                     </div>
-                    <div className="flex items-center space-x-2 md:space-x-3">
+                    <div className="flex items-center space-x-1 md:space-x-3">
                       <Waves className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
                       <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.length}</span>
                     </div>
-                    <div className="flex items-center space-x-2 md:space-x-3">
+                    <div className="flex items-center space-x-1 md:space-x-3">
                       <DollarSign className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
                       <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.hourlyRate}</span>
                     </div>
