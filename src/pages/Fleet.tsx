@@ -1,10 +1,11 @@
-
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Users, Waves, DollarSign, Eye } from 'lucide-react';
+import { Users, Waves, DollarSign, Eye, SlidersHorizontal } from 'lucide-react';
 import { Bath, Utensils, Sparkles, Bed, Music, Star, Wind } from 'lucide-react';
 import BoatDetailsModal from '@/components/BoatDetailsModal';
 import sevenStarMain from '@/assets/seven-star-main.jpg';
@@ -22,6 +23,8 @@ import sevenStar21 from '@/assets/seven-star-21.jpg';
 const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortCheapestFirst, setSortCheapestFirst] = useState(false);
+  const [maxGuestsFilter, setMaxGuestsFilter] = useState('all');
 
   const boats = [
     {
@@ -136,6 +139,43 @@ const Fleet = () => {
     }
   ];
 
+  // Extract numeric price from hourly rate string
+  const extractPrice = (rateString: string): number => {
+    const match = rateString.match(/\$(\d{1,3}(?:,\d{3})*)/);
+    return match ? parseInt(match[1].replace(/,/g, '')) : 0;
+  };
+
+  // Extract maximum capacity from capacity string
+  const extractMaxCapacity = (capacityString: string): number => {
+    const match = capacityString.match(/(\d+)\s*Guests?$/i);
+    return match ? parseInt(match[1]) : 0;
+  };
+
+  // Filter and sort boats based on current filters
+  const filteredAndSortedBoats = useMemo(() => {
+    let filtered = [...boats];
+
+    // Apply guests filter
+    if (maxGuestsFilter !== 'all') {
+      const maxGuests = parseInt(maxGuestsFilter);
+      filtered = filtered.filter(boat => extractMaxCapacity(boat.capacity) <= maxGuests);
+    }
+
+    // Apply price sorting
+    filtered.sort((a, b) => {
+      const priceA = extractPrice(a.hourlyRate);
+      const priceB = extractPrice(b.hourlyRate);
+      
+      if (sortCheapestFirst) {
+        return priceA - priceB; // Cheapest first
+      } else {
+        return priceB - priceA; // Most expensive first
+      }
+    });
+
+    return filtered;
+  }, [boats, sortCheapestFirst, maxGuestsFilter]);
+
   const handleViewDetails = (boat: any) => {
     setSelectedBoat(boat);
     setIsModalOpen(true);
@@ -156,11 +196,61 @@ const Fleet = () => {
         </div>
       </section>
 
+      {/* Filters Section */}
+      <section className="pb-8 px-4">
+        <div className="container mx-auto">
+          <div className="bg-card border rounded-lg p-4 md:p-6 mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <SlidersHorizontal className="h-5 w-5 text-primary" />
+              <h3 className="font-serif text-lg font-semibold text-primary">Filter & Sort</h3>
+            </div>
+            
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+              {/* Price Sorting Toggle */}
+              <div className="flex items-center space-x-3">
+                <Switch
+                  id="price-sort"
+                  checked={sortCheapestFirst}
+                  onCheckedChange={setSortCheapestFirst}
+                />
+                <label htmlFor="price-sort" className="font-sans text-sm font-medium">
+                  Sort by Price: Cheapest to Highest
+                </label>
+              </div>
+
+              {/* Max Guests Filter */}
+              <div className="flex flex-col md:flex-row md:items-center gap-3">
+                <span className="font-sans text-sm font-medium">Max Guests:</span>
+                <ToggleGroup 
+                  type="single" 
+                  value={maxGuestsFilter} 
+                  onValueChange={(value) => setMaxGuestsFilter(value || 'all')}
+                  className="justify-start"
+                >
+                  <ToggleGroupItem value="all" variant="outline" size="sm">
+                    All
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="20" variant="outline" size="sm">
+                    ≤20
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="40" variant="outline" size="sm">
+                    ≤40
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="80" variant="outline" size="sm">
+                    ≤80
+                  </ToggleGroupItem>
+                </ToggleGroup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced Fleet Grid */}
       <section className="pb-20 px-1 md:px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-            {boats.map((boat, index) => (
+            {filteredAndSortedBoats.map((boat, index) => (
               <Card key={index} className="overflow-hidden group hover:shadow-luxury transition-all duration-300">
                 <div className="relative">
                   <img 
