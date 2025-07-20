@@ -168,9 +168,9 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                     </div>
                   ))}
                 </div>
-              )}
-            </TabsContent>
-          )}
+              </TabsContent>
+            )}
+          </Tabs>
         </div>
       )}
     </div>
