@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'serif': ['Playfair Display', 'serif'],
-				'sans': ['Inter', 'sans-serif'],
+				'sans': ['Inter', 'system-ui', 'sans-serif'],
+				'display': ['Poppins', 'Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -38,10 +39,16 @@ export default {
 					foreground: 'hsl(var(--secondary-foreground))',
 					light: 'hsl(var(--secondary-light))'
 				},
-				gold: {
-					DEFAULT: 'hsl(var(--gold))',
-					light: 'hsl(var(--gold-light))',
-					dark: 'hsl(var(--gold-dark))'
+				ocean: {
+					DEFAULT: 'hsl(207 90% 40%)',
+					light: 'hsl(207 80% 60%)',
+					dark: 'hsl(207 90% 30%)'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))',
+					bright: 'hsl(var(--accent-bright))',
+					'bright-light': 'hsl(var(--accent-bright-light))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -50,10 +57,6 @@ export default {
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -78,6 +81,10 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			boxShadow: {
+				'clean': 'var(--shadow-soft)',
+				'card': 'var(--shadow-medium)',
 			},
 			keyframes: {
 				'accordion-down': {
