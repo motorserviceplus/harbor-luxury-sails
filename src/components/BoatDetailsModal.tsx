@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -20,6 +19,7 @@ interface Boat {
   seasonalPricing?: {
     [key: string]: string;
   };
+  description: string;
   images: string[];
   highlight?: string;
   amenities?: Array<{
@@ -90,6 +90,8 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             <span className="text-lg font-bold text-primary">{boat.hourlyRate}</span>
           </div>
         </div>
+        
+        <p className="text-foreground text-sm leading-relaxed line-clamp-3">{boat.description}</p>
       </div>
 
       {/* Compact Key Stats */}
@@ -157,7 +159,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
   const ModalContent = () => (
     <div className="space-y-8">
-      {/* Enhanced Image Gallery - Made taller for desktop */}
+      {/* Enhanced Image Gallery */}
       <div className="relative">
         <Carousel className="w-full">
           <CarouselContent>
@@ -166,7 +168,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <img 
                   src={image} 
                   alt={`${boat.name} - View ${index + 1}`}
-                  className="w-full h-80 object-cover rounded-xl"
+                  className="w-full h-64 object-cover rounded-xl"
                 />
               </CarouselItem>
             ))}
@@ -184,7 +186,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         )}
       </div>
 
-      {/* Boat Header Info - Removed description */}
+      {/* Boat Header Info */}
       <div className="space-y-4">
         <div className="flex items-start justify-between">
           <div>
@@ -199,6 +201,8 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             </div>
           </div>
         </div>
+        
+        <p className="text-foreground text-lg leading-relaxed">{boat.description}</p>
       </div>
 
       {/* Enhanced Key Stats */}
