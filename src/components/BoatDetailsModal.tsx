@@ -113,25 +113,74 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
-      {/* Compact Amenities Preview */}
-      {boat.amenities && (
-        <div>
-          <h4 className="font-serif text-base font-semibold text-primary mb-2">Top Amenities</h4>
-          <div className="grid grid-cols-3 gap-1">
-            {boat.amenities.slice(0, 9).map((amenity, index) => {
-              const IconComponent = amenity.icon;
-              return (
-                <div key={index} className="flex items-center space-x-1.5 text-xs">
-                  <IconComponent className="h-3 w-3 text-gold flex-shrink-0" />
-                  <span className="text-foreground truncate">{amenity.name}</span>
-                </div>
-              );
-            })}
-          </div>
-          {boat.amenities.length > 9 && (
-            <p className="text-xs text-muted-foreground mt-1">+{boat.amenities.length - 9} more amenities</p>
+      {/* Mobile Information Tabs */}
+      {(boat.amenities || boat.seasonalPricing || boat.specifications || boat.recreationExtras) && (
+        <Tabs defaultValue="amenities" className="w-full">
+          <TabsList className="grid w-full grid-cols-4 h-10">
+            {boat.amenities && <TabsTrigger value="amenities" className="text-xs">Amenities</TabsTrigger>}
+            {boat.seasonalPricing && <TabsTrigger value="pricing" className="text-xs">Pricing</TabsTrigger>}
+            {boat.specifications && <TabsTrigger value="specs" className="text-xs">Specs</TabsTrigger>}
+            {boat.recreationExtras && <TabsTrigger value="extras" className="text-xs">Extras</TabsTrigger>}
+          </TabsList>
+          
+          {boat.amenities && (
+            <TabsContent value="amenities" className="mt-4">
+              <div className="grid grid-cols-2 gap-2">
+                {boat.amenities.map((amenity, index) => {
+                  const IconComponent = amenity.icon;
+                  return (
+                    <div key={index} className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                      <IconComponent className="h-3 w-3 text-gold flex-shrink-0" />
+                      <span className="text-foreground text-xs">{amenity.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </TabsContent>
           )}
-        </div>
+          
+          {boat.seasonalPricing && (
+            <TabsContent value="pricing" className="mt-4">
+              <div className="space-y-3">
+                <h5 className="font-semibold text-primary text-sm">Seasonal Pricing</h5>
+                <div className="space-y-2">
+                  {Object.entries(boat.seasonalPricing).map(([season, price], index) => (
+                    <div key={index} className="flex justify-between items-center py-2 px-3 border border-border/50 rounded-lg">
+                      <span className="text-foreground font-medium text-xs">{season}</span>
+                      <span className="text-sm font-bold text-primary">{price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+          )}
+          
+          {boat.specifications && (
+            <TabsContent value="specs" className="mt-4">
+              <div className="space-y-2">
+                {Object.entries(boat.specifications).map(([spec, value], index) => (
+                  <div key={index} className="flex justify-between items-center py-2 px-3 border border-border/50 rounded-lg">
+                    <span className="text-foreground font-medium capitalize text-xs">{spec.replace(/([A-Z])/g, ' $1')}</span>
+                    <span className="text-sm font-semibold text-primary">{value}</span>
+                  </div>
+                ))}
+              </div>
+            </TabsContent>
+          )}
+          
+          {boat.recreationExtras && (
+            <TabsContent value="extras" className="mt-4">
+              <div className="grid grid-cols-1 gap-2">
+                {boat.recreationExtras.map((extra, index) => (
+                  <div key={index} className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                    <div className="w-1.5 h-1.5 bg-gold rounded-full"></div>
+                    <span className="text-foreground text-xs">{extra}</span>
+                  </div>
+                ))}
+              </div>
+            </TabsContent>
+          )}
+        </Tabs>
       )}
 
       {/* Compact Booking Actions */}
