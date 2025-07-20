@@ -147,7 +147,7 @@ const Fleet = () => {
       <section className="pt-32 pb-16 px-4">
         <div className="container mx-auto text-center">
           <h1 className="font-serif text-5xl md:text-6xl font-bold text-primary mb-6">
-            Our Premium Fleet
+            Premium Fleet
           </h1>
           <p className="font-sans text-xl text-muted-foreground max-w-3xl mx-auto">
             Each vessel in our exclusive collection has been carefully selected to provide 
