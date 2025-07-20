@@ -50,6 +50,113 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
     window.open(whatsappUrl, '_blank');
   };
 
+  const MobileModalContent = () => (
+    <div className="space-y-4">
+      {/* Compact Image Gallery */}
+      <div className="relative">
+        <Carousel className="w-full">
+          <CarouselContent>
+            {boat.images.map((image, index) => (
+              <CarouselItem key={index}>
+                <img 
+                  src={image} 
+                  alt={`${boat.name} - View ${index + 1}`}
+                  className="w-full h-48 object-cover rounded-lg"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-2 bg-background/80 backdrop-blur-sm h-8 w-8" />
+          <CarouselNext className="right-2 bg-background/80 backdrop-blur-sm h-8 w-8" />
+        </Carousel>
+        
+        {boat.highlight && (
+          <div className="absolute top-3 left-3">
+            <Badge className="bg-gold text-primary font-semibold text-xs px-2 py-1">
+              {boat.highlight}
+            </Badge>
+          </div>
+        )}
+      </div>
+
+      {/* Compact Header */}
+      <div className="space-y-3">
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="font-serif text-xl font-bold text-primary">{boat.name}</h3>
+            <p className="text-sm text-muted-foreground">{boat.type}</p>
+          </div>
+          <div className="text-right">
+            <span className="text-lg font-bold text-primary">{boat.hourlyRate}</span>
+          </div>
+        </div>
+        
+        <p className="text-foreground text-sm leading-relaxed line-clamp-3">{boat.description}</p>
+      </div>
+
+      {/* Compact Key Stats */}
+      <div className="grid grid-cols-3 gap-3 p-3 bg-muted/30 rounded-lg">
+        <div className="text-center">
+          <Users className="h-5 w-5 text-gold mx-auto mb-1" />
+          <p className="text-xs text-muted-foreground">Capacity</p>
+          <p className="font-semibold text-xs text-foreground">{boat.capacity}</p>
+        </div>
+        <div className="text-center">
+          <Waves className="h-5 w-5 text-gold mx-auto mb-1" />
+          <p className="text-xs text-muted-foreground">Length</p>
+          <p className="font-semibold text-xs text-foreground">{boat.length}</p>
+        </div>
+        <div className="text-center">
+          <Clock className="h-5 w-5 text-gold mx-auto mb-1" />
+          <p className="text-xs text-muted-foreground">Rate</p>
+          <p className="font-semibold text-xs text-foreground">{boat.hourlyRate}</p>
+        </div>
+      </div>
+
+      {/* Compact Amenities Preview */}
+      {boat.amenities && (
+        <div>
+          <h4 className="font-serif text-base font-semibold text-primary mb-2">Top Amenities</h4>
+          <div className="grid grid-cols-2 gap-2">
+            {boat.amenities.slice(0, 6).map((amenity, index) => {
+              const IconComponent = amenity.icon;
+              return (
+                <div key={index} className="flex items-center space-x-2 text-xs">
+                  <IconComponent className="h-3 w-3 text-gold" />
+                  <span className="text-foreground truncate">{amenity.name}</span>
+                </div>
+              );
+            })}
+          </div>
+          {boat.amenities.length > 6 && (
+            <p className="text-xs text-muted-foreground mt-2">+{boat.amenities.length - 6} more amenities</p>
+          )}
+        </div>
+      )}
+
+      {/* Compact Booking Actions */}
+      <div className="space-y-3 pt-4 border-t border-border">
+        <Button 
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-12"
+          onClick={() => handleWhatsAppBooking(boat.name)}
+        >
+          <MessageCircle className="w-4 h-4 mr-2" />
+          Book by WhatsApp
+        </Button>
+        <div className="grid grid-cols-2 gap-2">
+          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-10 text-sm">
+            <Phone className="w-3 h-3 mr-1" />
+            Call
+          </Button>
+          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-10 text-sm">
+            <Calendar className="w-3 h-3 mr-1" />
+            Check
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+
   const ModalContent = () => (
     <div className="space-y-8">
       {/* Enhanced Image Gallery */}
@@ -61,7 +168,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <img 
                   src={image} 
                   alt={`${boat.name} - View ${index + 1}`}
-                  className="w-full h-80 md:h-96 object-cover rounded-xl"
+                  className="w-full h-64 object-cover rounded-xl"
                 />
               </CarouselItem>
             ))}
@@ -225,11 +332,11 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side="bottom" className="h-[95vh] overflow-y-auto p-6">
-          <SheetHeader className="mb-6">
-            <SheetTitle className="text-left text-2xl font-serif">{boat.name}</SheetTitle>
+        <SheetContent side="bottom" className="h-[90vh] overflow-y-auto p-4">
+          <SheetHeader className="mb-4">
+            <SheetTitle className="text-left text-xl font-serif">{boat.name}</SheetTitle>
           </SheetHeader>
-          <ModalContent />
+          <MobileModalContent />
         </SheetContent>
       </Sheet>
     );
