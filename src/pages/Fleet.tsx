@@ -162,7 +162,7 @@ const Fleet = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {boats.map((boat, index) => (
-              <Card key={index} className="overflow-hidden group hover:shadow-luxury transition-all duration-300">
+              <Card key={index} className="overflow-hidden group shadow-md hover:shadow-luxury transition-all duration-300">
                 <div className="relative">
                   <img 
                     src={boat.images[0]} 
