@@ -200,7 +200,7 @@ const Fleet = () => {
                     </div>
                     <div className="flex items-center space-x-1 md:space-x-3">
                       <DollarSign className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
-                      <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.hourlyRate}</span>
+                      <span className="font-sans text-base md:text-lg font-bold text-primary leading-tight">{boat.hourlyRate}</span>
                     </div>
                   </div>
 
