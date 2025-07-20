@@ -118,12 +118,12 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           </TabsList>
           
           {boat.amenities && (
-            <TabsContent value="amenities" className="mt-4">
-              <div className="grid grid-cols-2 gap-2">
+            <TabsContent value="amenities" className="mt-3">
+              <div className="grid grid-cols-2 gap-1">
                 {boat.amenities.map((amenity, index) => {
                   const IconComponent = amenity.icon;
                   return (
-                    <div key={index} className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                    <div key={index} className="flex items-center space-x-1.5 p-1.5 rounded-lg hover:bg-muted/50 transition-colors">
                       <IconComponent className="h-3 w-3 text-gold flex-shrink-0" />
                       <span className="text-foreground text-xs">{amenity.name}</span>
                     </div>
