@@ -104,7 +104,6 @@ const Fleet = () => {
     }
   ];
 
-
   const handleViewDetails = (boat: any) => {
     setSelectedBoat(boat);
     setIsModalOpen(true);
@@ -126,16 +125,16 @@ const Fleet = () => {
       </section>
 
       {/* Enhanced Fleet Grid */}
-      <section className="pb-20 px-4">
+      <section className="pb-20 px-2 md:px-4">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {boats.map((boat, index) => (
               <Card key={index} className="overflow-hidden group hover:shadow-luxury transition-all duration-300">
                 <div className="relative">
                   <img 
                     src={boat.images[0]} 
                     alt={boat.name}
-                    className="w-full h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                    className="w-full h-48 md:h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity duration-200"
                     onClick={() => handleViewDetails(boat)}
                   />
                   
@@ -148,37 +147,37 @@ const Fleet = () => {
                   )}
                 </div>
                 
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <h3 className="font-serif text-2xl font-semibold text-primary mb-2">
+                <CardContent className="p-4 md:p-6">
+                  <div className="mb-3 md:mb-4">
+                    <h3 className="font-serif text-xl md:text-2xl font-semibold text-primary mb-2">
                       {boat.name}
                     </h3>
                     <p className="font-sans text-muted-foreground mb-1">{boat.type}</p>
                     <p className="font-sans text-sm text-muted-foreground">Hire in Sydney</p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-6 mb-6">
-                    <div className="flex items-center space-x-3">
-                      <Users className="h-6 w-6 text-gold" />
-                      <span className="font-sans text-sm text-muted-foreground">{boat.capacity}</span>
+                  <div className="grid grid-cols-3 gap-2 md:gap-4 mb-4">
+                    <div className="flex items-center space-x-1 md:space-x-2">
+                      <Users className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" />
+                      <span className="font-sans text-xs md:text-sm text-muted-foreground leading-tight">{boat.capacity}</span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Waves className="h-6 w-6 text-gold" />
-                      <span className="font-sans text-sm text-muted-foreground">{boat.length}</span>
+                    <div className="flex items-center space-x-1 md:space-x-2">
+                      <Waves className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" />
+                      <span className="font-sans text-xs md:text-sm text-muted-foreground leading-tight">{boat.length}</span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <DollarSign className="h-6 w-6 text-gold" />
-                      <span className="font-sans text-sm text-muted-foreground">{boat.hourlyRate}</span>
+                    <div className="flex items-center space-x-1 md:space-x-2">
+                      <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" />
+                      <span className="font-sans text-xs md:text-sm text-muted-foreground leading-tight">{boat.hourlyRate}</span>
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     <Button 
                       variant="outline" 
-                      className="w-full border-primary text-primary hover:bg-primary/5 font-semibold h-12"
+                      className="w-full border-primary text-primary hover:bg-primary/5 font-semibold h-10 md:h-12"
                       onClick={() => handleViewDetails(boat)}
                     >
-                      <Eye className="w-5 h-5 mr-2" />
+                      <Eye className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                       View Details
                     </Button>
                   </div>
