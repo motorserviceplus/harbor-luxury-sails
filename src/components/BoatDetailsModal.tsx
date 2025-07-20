@@ -87,7 +87,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             </a>
             <Button className="bg-blue-900 hover:bg-blue-800 text-white h-10 px-3 text-xs">
               <Calendar className="w-3 h-3 mr-1" />
-              Quote
+              Instant Quote
             </Button>
           </div>
         </div>
