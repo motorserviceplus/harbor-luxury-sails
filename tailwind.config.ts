@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
-				'display': ['Space Grotesk', 'Inter', 'sans-serif'],
+				'serif': ['Playfair Display', 'serif'],
+				'sans': ['Inter', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -39,14 +38,10 @@ export default {
 					foreground: 'hsl(var(--secondary-foreground))',
 					light: 'hsl(var(--secondary-light))'
 				},
-				electric: {
-					DEFAULT: 'hsl(var(--accent-electric))',
-					light: 'hsl(var(--accent-electric-light))',
-					dark: 'hsl(var(--accent-electric-dark))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+				gold: {
+					DEFAULT: 'hsl(var(--gold))',
+					light: 'hsl(var(--gold-light))',
+					dark: 'hsl(var(--gold-dark))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -55,6 +50,10 @@ export default {
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -80,10 +79,6 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			boxShadow: {
-				'glass': 'var(--shadow-glass)',
-				'glow': 'var(--shadow-glow)',
-			},
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -100,47 +95,11 @@ export default {
 					to: {
 						height: '0'
 					}
-				},
-				'mesh-move': {
-					'0%, 100%': {
-						'background-position': '0% 50%'
-					},
-					'50%': {
-						'background-position': '100% 50%'
-					}
-				},
-				'gradient-shift': {
-					'0%, 100%': {
-						'background-position': '0% 50%'
-					},
-					'50%': {
-						'background-position': '100% 50%'
-					}
-				},
-				'float': {
-					'0%, 100%': {
-						transform: 'translateY(0px)'
-					},
-					'50%': {
-						transform: 'translateY(-10px)'
-					}
-				},
-				'glow-pulse': {
-					'0%, 100%': {
-						'box-shadow': '0 0 20px hsl(185 100% 50% / 0.3)'
-					},
-					'50%': {
-						'box-shadow': '0 0 40px hsl(185 100% 50% / 0.6)'
-					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'mesh-move': 'mesh-move 15s ease infinite',
-				'gradient-shift': 'gradient-shift 8s ease infinite',
-				'float': 'float 6s ease-in-out infinite',
-				'glow-pulse': 'glow-pulse 3s ease-in-out infinite'
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},
