@@ -248,6 +248,26 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
+      {/* Action Buttons - Moved here after stats */}
+      <div className="grid grid-cols-2 gap-4">
+        <a href="tel:+61401494414">
+          <Button 
+            variant="outline" 
+            className="w-full border-green-600 text-green-600 hover:bg-green-50 h-12 font-semibold"
+          >
+            <Phone className="w-4 h-4 mr-2 text-green-600" />
+            Call Now
+          </Button>
+        </a>
+        <Button 
+          variant="outline" 
+          className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 h-12 font-semibold"
+        >
+          <Calendar className="w-4 h-4 mr-2 text-blue-600" />
+          Instant Quote
+        </Button>
+      </div>
+
       {(boat.seasonalPricing || boat.amenities || boat.recreationExtras) && (
         <Tabs defaultValue="pricing" className="w-full">
           <TabsList className="grid w-full grid-cols-3 h-12">
@@ -302,21 +322,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           )}
         </Tabs>
       )}
-
-      <div className="space-y-4 pt-6 border-t border-border">
-        <div className="grid grid-cols-2 gap-4">
-          <a href="tel:+61401494414">
-            <Button className="w-full bg-green-600 hover:bg-green-700 text-white h-12 font-semibold">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
-            </Button>
-          </a>
-          <Button className="bg-blue-900 hover:bg-blue-800 text-white h-12 font-semibold">
-            <Calendar className="w-4 h-4 mr-2" />
-            Instant Quote
-          </Button>
-        </div>
-      </div>
     </div>
   );
 
