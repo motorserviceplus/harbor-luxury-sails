@@ -1,8 +1,7 @@
 
-
 import React from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -84,7 +83,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
-      {/* Compact Key Stats */}
       <div className="grid grid-cols-3 gap-3 p-3 bg-muted/30 rounded-lg">
         <div className="text-center">
           <Users className="h-5 w-5 text-gold mx-auto mb-1" />
@@ -103,7 +101,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
-      {/* Mobile Information Tabs */}
       {(boat.seasonalPricing || boat.amenities || boat.recreationExtras) && (
         <Tabs defaultValue="pricing" className="w-full">
           <TabsList className="grid w-full grid-cols-3 h-10">
@@ -159,7 +156,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </Tabs>
       )}
 
-      {/* Compact Booking Actions */}
       <div className="space-y-3 pt-4 border-t border-border">
         <div className="grid grid-cols-2 gap-2">
           <a href="tel:+61401494414">
@@ -206,7 +202,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         )}
       </div>
 
-      {/* Boat Header Info */}
       <div className="space-y-4">
         <div className="flex items-start justify-between">
           <div>
@@ -223,7 +218,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
-      {/* Enhanced Key Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-muted/30 rounded-xl">
         <div className="flex items-center space-x-4">
           <div className="p-3 bg-gold/10 rounded-full">
@@ -254,7 +248,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </div>
       </div>
 
-      {/* Enhanced Information Tabs */}
       {(boat.seasonalPricing || boat.amenities || boat.recreationExtras) && (
         <Tabs defaultValue="pricing" className="w-full">
           <TabsList className="grid w-full grid-cols-3 h-12">
@@ -310,7 +303,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </Tabs>
       )}
 
-      {/* Enhanced Booking Actions */}
       <div className="space-y-4 pt-6 border-t border-border">
         <div className="grid grid-cols-2 gap-4">
           <a href="tel:+61401494414">
@@ -331,9 +323,15 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side="bottom" className="h-[90vh] overflow-y-auto p-4">
+        <SheetContent 
+          side="bottom" 
+          className="max-h-[85dvh] min-h-[50dvh] overflow-y-auto p-4 pt-6 pb-safe rounded-t-xl border-t border-border/20 backdrop-blur-md"
+        >
           <SheetHeader className="mb-4">
             <SheetTitle className="text-left text-xl font-serif">{boat.name}</SheetTitle>
+            <SheetDescription className="text-left text-sm text-muted-foreground">
+              Luxury yacht charter details and booking information
+            </SheetDescription>
           </SheetHeader>
           <MobileModalContent />
         </SheetContent>
@@ -346,6 +344,9 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto p-8">
         <DialogHeader className="mb-6">
           <DialogTitle className="text-3xl font-serif">{boat.name}</DialogTitle>
+          <DialogDescription className="text-lg text-muted-foreground">
+            Luxury yacht charter details and booking information
+          </DialogDescription>
         </DialogHeader>
         <ModalContent />
       </DialogContent>
