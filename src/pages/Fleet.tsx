@@ -2,6 +2,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Users, Waves, Calendar, Star, Clock, DollarSign, MessageCircle } from 'lucide-react';
 import sevenStarImage from '@/assets/seven-star-yacht.jpg';
 import yachtInteriorImage from '@/assets/yacht-interior.jpg';
@@ -16,7 +17,12 @@ const Fleet = () => {
       hourlyRate: '$2000/hr',
       features: ['Water slide', 'Multiple decks', 'Premium bar', 'Entertainment system', 'Air conditioning', 'Sun deck'],
       description: 'Our flagship vessel featuring an exciting water slide and multiple entertainment areas, perfect for large celebrations and unforgettable Sydney Harbour experiences.',
-      image: sevenStarImage,
+      images: [
+        sevenStarImage,
+        yachtInteriorImage,
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80', // Luxury yacht deck
+        'https://images.unsplash.com/photo-1567449303183-8a5aa7c62fdb?w=800&q=80', // Yacht water slide area
+      ],
       highlight: 'Featured Yacht'
     },
     {
@@ -27,7 +33,12 @@ const Fleet = () => {
       hourlyRate: '$1650/hr',
       features: ['High-speed performance', 'Sleek interior', 'Premium sound system', 'Air conditioning', 'Modern galley', 'Panoramic windows'],
       description: 'A sophisticated performance yacht combining speed with luxury, ideal for intimate gatherings and corporate events with contemporary styling.',
-      image: yachtInteriorImage,
+      images: [
+        yachtInteriorImage,
+        'https://images.unsplash.com/photo-1593113616828-6f22bdd62e63?w=800&q=80', // Modern yacht interior
+        'https://images.unsplash.com/photo-1541013064736-c026a50b4269?w=800&q=80', // Yacht exterior at sea
+        'https://images.unsplash.com/photo-1567449303183-8a5aa7c62fdb?w=800&q=80', // Yacht deck area
+      ],
       highlight: 'Performance Choice'
     }
   ];
@@ -61,11 +72,22 @@ const Fleet = () => {
             {boats.map((boat, index) => (
               <Card key={index} className="overflow-hidden group hover:shadow-luxury transition-all duration-300">
                 <div className="relative">
-                  <img 
-                    src={boat.image} 
-                    alt={boat.name}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {boat.images.map((image, imageIndex) => (
+                        <CarouselItem key={imageIndex}>
+                          <img 
+                            src={image} 
+                            alt={`${boat.name} - View ${imageIndex + 1}`}
+                            className="w-full h-64 object-cover"
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-4" />
+                    <CarouselNext className="right-4" />
+                  </Carousel>
+                  
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-gold text-primary font-semibold">
                       {boat.highlight}
