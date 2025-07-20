@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Users, Waves, DollarSign, Eye } from 'lucide-react';
-import { Bath, Utensils, Sparkles, Bed, Music, Star } from 'lucide-react';
+import { Bath, Utensils, Sparkles, Bed, Music, Star, Wind } from 'lucide-react';
 import BoatDetailsModal from '@/components/BoatDetailsModal';
 import sevenStarMain from '@/assets/seven-star-main.jpg';
 import sevenStar1 from '@/assets/seven-star-1.jpg';
@@ -17,7 +18,6 @@ import sevenStar12 from '@/assets/seven-star-12.jpg';
 import sevenStar16 from '@/assets/seven-star-16.jpg';
 import sevenStar19 from '@/assets/seven-star-19.jpg';
 import sevenStar21 from '@/assets/seven-star-21.jpg';
-import yachtInteriorImage from '@/assets/yacht-interior.jpg';
 
 const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
@@ -88,19 +88,51 @@ const Fleet = () => {
       }
     },
     {
-      name: 'Privacy',
-      type: 'Performance Luxury Yacht',
+      name: 'MY Privacy',
+      type: '87 ft Luxury Warren Sports Yacht',
       capacity: '1-36 Guests',
       length: '87 feet',
       hourlyRate: 'From $1,650/hr',
-      description: 'A sophisticated performance yacht combining speed with luxury, ideal for intimate gatherings and corporate events with contemporary styling.',
+      seasonalPricing: {
+        'Jan-Oct (Standard Season)': 'From $1,650/hr',
+        'Nov-Dec (Peak Season)': 'From $1,850/hr'
+      },
+      description: 'MY Privacy is a stunning 87ft Warren Sports Yacht that combines luxury with performance on Sydney Harbour. This sophisticated vessel features contemporary styling, panoramic windows, and spacious entertaining areas both indoor and outdoor. With accommodation for up to 36 guests and 4 beautifully appointed bedrooms, it\'s perfect for intimate celebrations, corporate events, or luxury day charters. The yacht boasts premium amenities including a retractable sunroof, full bar, and aft deck entertaining area, all serviced by a professional crew.',
       images: [
-        yachtInteriorImage,
-        'https://images.unsplash.com/photo-1593113616828-6f22bdd62e63?w=800&q=80',
-        'https://images.unsplash.com/photo-1541013064736-c026a50b4269?w=800&q=80',
-        'https://images.unsplash.com/photo-1567449303183-8a5aa7c62fdb?w=800&q=80',
+        'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8115-1-scaled.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/05/DSC_8368-min.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-148-min.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8361-scaled.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/05/MK107793-1-min.jpg'
       ],
-      highlight: 'Performance Choice'
+      highlight: 'Luxury Sports Yacht',
+      amenities: [
+        { name: 'Shower', icon: Bath },
+        { name: 'Toilets', icon: Bath },
+        { name: 'iPod Docking', icon: Music },
+        { name: 'Speakers', icon: Music },
+        { name: 'Bedrooms (4 total)', icon: Bed },
+        { name: 'Ensuite Bathrooms', icon: Bath },
+        { name: 'Full Bar', icon: Utensils },
+        { name: 'Air Conditioning', icon: Sparkles },
+        { name: 'Retractable Sunroof', icon: Wind },
+        { name: 'Panoramic Windows', icon: Star },
+        { name: 'Spacious Open-Plan Lounge', icon: Star },
+        { name: 'Aft Deck Entertaining Area', icon: Star }
+      ],
+      recreationExtras: [
+        'Full professional crew (captain + crew included)',
+        'Food & catering packages',
+        'DJ services',
+        'Paddleboards',
+        'Drinks packages'
+      ],
+      specifications: {
+        bathrooms: 4,
+        bedrooms: 4,
+        fuel: 'Included',
+        crew: 'Captain & Crew Included'
+      }
     }
   ];
 
