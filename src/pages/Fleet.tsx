@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -37,7 +38,6 @@ const Fleet = () => {
         'Jan-Mar & Oct': '$2,250/hr', 
         'Nov-Dec': '$2,500/hr'
       },
-      description: 'A striking 98ft Azimut superyacht, Seven Star is one of the most iconic private charters on Sydney Harbour. With capacity for up to 80 guests, it features luxurious finishes, indoor and outdoor entertaining spaces, and a full-service crew. Perfect for weddings, VIP parties, or corporate events. Enjoy its rooftop entertaining area, jacuzzi, dance floor, and more.',
       images: [
         sevenStarMain,
         sevenStar1,
@@ -93,7 +93,6 @@ const Fleet = () => {
       capacity: '1-36 Guests',
       length: '87 feet',
       hourlyRate: '$1650/hr',
-      description: 'A sophisticated performance yacht combining speed with luxury, ideal for intimate gatherings and corporate events with contemporary styling.',
       images: [
         yachtInteriorImage,
         'https://images.unsplash.com/photo-1593113616828-6f22bdd62e63?w=800&q=80',
