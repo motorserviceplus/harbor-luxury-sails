@@ -139,11 +139,6 @@ const Fleet = () => {
                     onClick={() => handleViewDetails(boat)}
                   />
                   
-                  {/* View icon in top-right corner */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <Eye className="w-4 h-4 text-white" />
-                  </div>
-                  
                   {boat.highlight && (
                     <div className="absolute top-4 left-4">
                       <Badge className="bg-gold text-primary font-semibold">
