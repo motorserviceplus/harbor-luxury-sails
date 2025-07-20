@@ -131,7 +131,7 @@ const Fleet = () => {
         </div>
       </section>
 
-      {/* Simplified Fleet Grid */}
+      {/* Enhanced Fleet Grid */}
       <section className="pb-20 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -153,7 +153,7 @@ const Fleet = () => {
                   )}
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-primary/90 text-primary-foreground font-semibold">
-                      <DollarSign className="w-3 h-3 mr-1" />
+                      <DollarSign className="w-4 h-4 mr-1" />
                       {boat.hourlyRate}
                     </Badge>
                   </div>
@@ -168,35 +168,35 @@ const Fleet = () => {
                     <p className="font-sans text-sm text-muted-foreground">Hire in Sydney</p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="flex items-center space-x-2">
-                      <Users className="h-4 w-4 text-gold" />
+                  <div className="grid grid-cols-3 gap-6 mb-6">
+                    <div className="flex items-center space-x-3">
+                      <Users className="h-6 w-6 text-gold" />
                       <span className="font-sans text-sm text-muted-foreground">{boat.capacity}</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Waves className="h-4 w-4 text-gold" />
+                    <div className="flex items-center space-x-3">
+                      <Waves className="h-6 w-6 text-gold" />
                       <span className="font-sans text-sm text-muted-foreground">{boat.length}</span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <DollarSign className="h-4 w-4 text-gold" />
+                    <div className="flex items-center space-x-3">
+                      <DollarSign className="h-6 w-6 text-gold" />
                       <span className="font-sans text-sm text-muted-foreground">From {boat.hourlyRate.replace('From ', '')}</span>
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     <Button 
-                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-12"
                       onClick={() => handleWhatsAppBooking(boat.name)}
                     >
-                      <MessageCircle className="w-4 h-4 mr-2" />
+                      <MessageCircle className="w-5 h-5 mr-2" />
                       Book by WhatsApp
                     </Button>
                     <Button 
                       variant="outline" 
-                      className="w-full border-primary text-primary hover:bg-primary/5 font-semibold"
+                      className="w-full border-primary text-primary hover:bg-primary/5 font-semibold h-12"
                       onClick={() => handleViewDetails(boat)}
                     >
-                      <Eye className="w-4 h-4 mr-2" />
+                      <Eye className="w-5 h-5 mr-2" />
                       View Details
                     </Button>
                   </div>

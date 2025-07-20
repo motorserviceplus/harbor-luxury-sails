@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -6,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MessageCircle, Calendar, Users, Waves, Clock, DollarSign, Phone, Mail } from 'lucide-react';
+import { MessageCircle, Calendar, Users, Waves, Clock, DollarSign, Phone, Mail, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Boat {
@@ -52,8 +51,8 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
   };
 
   const ModalContent = () => (
-    <div className="space-y-6">
-      {/* Image Gallery */}
+    <div className="space-y-8">
+      {/* Enhanced Image Gallery */}
       <div className="relative">
         <Carousel className="w-full">
           <CarouselContent>
@@ -62,66 +61,93 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <img 
                   src={image} 
                   alt={`${boat.name} - View ${index + 1}`}
-                  className="w-full h-64 md:h-80 object-cover rounded-lg"
+                  className="w-full h-80 md:h-96 object-cover rounded-xl"
                 />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
+          <CarouselPrevious className="left-6 bg-background/80 backdrop-blur-sm" />
+          <CarouselNext className="right-6 bg-background/80 backdrop-blur-sm" />
         </Carousel>
         
         {boat.highlight && (
-          <div className="absolute top-4 left-4">
-            <Badge className="bg-gold text-primary font-semibold">
+          <div className="absolute top-6 left-6">
+            <Badge className="bg-gold text-primary font-semibold text-sm px-3 py-1">
               {boat.highlight}
             </Badge>
           </div>
         )}
       </div>
 
-      {/* Boat Info */}
-      <div>
-        <h3 className="font-serif text-3xl font-bold text-primary mb-2">{boat.name}</h3>
-        <p className="text-muted-foreground mb-4">{boat.type}</p>
-        <p className="text-foreground">{boat.description}</p>
+      {/* Boat Header Info */}
+      <div className="space-y-4">
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="font-serif text-4xl font-bold text-primary mb-2">{boat.name}</h3>
+            <p className="text-lg text-muted-foreground mb-2">{boat.type}</p>
+            <p className="text-base text-muted-foreground">Available for hire in Sydney</p>
+          </div>
+          <div className="text-right">
+            <div className="flex items-center space-x-2 mb-2">
+              <DollarSign className="h-5 w-5 text-gold" />
+              <span className="text-xl font-bold text-primary">{boat.hourlyRate}</span>
+            </div>
+          </div>
+        </div>
+        
+        <p className="text-foreground text-lg leading-relaxed">{boat.description}</p>
       </div>
 
-      {/* Key Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="flex items-center space-x-2">
-          <Users className="h-5 w-5 text-gold" />
-          <span className="text-sm text-muted-foreground">{boat.capacity}</span>
+      {/* Enhanced Key Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-muted/30 rounded-xl">
+        <div className="flex items-center space-x-4">
+          <div className="p-3 bg-gold/10 rounded-full">
+            <Users className="h-6 w-6 text-gold" />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Capacity</p>
+            <p className="font-semibold text-foreground">{boat.capacity}</p>
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <Waves className="h-5 w-5 text-gold" />
-          <span className="text-sm text-muted-foreground">{boat.length}</span>
+        <div className="flex items-center space-x-4">
+          <div className="p-3 bg-gold/10 rounded-full">
+            <Waves className="h-6 w-6 text-gold" />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Length</p>
+            <p className="font-semibold text-foreground">{boat.length}</p>
+          </div>
         </div>
-        <div className="flex items-center space-x-2 col-span-2">
-          <Clock className="h-5 w-5 text-gold" />
-          <span className="text-sm text-muted-foreground">{boat.hourlyRate}</span>
+        <div className="flex items-center space-x-4">
+          <div className="p-3 bg-gold/10 rounded-full">
+            <Clock className="h-6 w-6 text-gold" />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Rate</p>
+            <p className="font-semibold text-foreground">{boat.hourlyRate}</p>
+          </div>
         </div>
       </div>
 
-      {/* Detailed Information Tabs */}
+      {/* Enhanced Information Tabs */}
       {(boat.amenities || boat.seasonalPricing || boat.specifications || boat.recreationExtras) && (
         <Tabs defaultValue="amenities" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            {boat.amenities && <TabsTrigger value="amenities">Amenities</TabsTrigger>}
-            {boat.seasonalPricing && <TabsTrigger value="pricing">Pricing</TabsTrigger>}
-            {boat.specifications && <TabsTrigger value="specs">Specs</TabsTrigger>}
-            {boat.recreationExtras && <TabsTrigger value="extras">Extras</TabsTrigger>}
+          <TabsList className="grid w-full grid-cols-4 h-12">
+            {boat.amenities && <TabsTrigger value="amenities" className="text-sm">Amenities</TabsTrigger>}
+            {boat.seasonalPricing && <TabsTrigger value="pricing" className="text-sm">Pricing</TabsTrigger>}
+            {boat.specifications && <TabsTrigger value="specs" className="text-sm">Specs</TabsTrigger>}
+            {boat.recreationExtras && <TabsTrigger value="extras" className="text-sm">Extras</TabsTrigger>}
           </TabsList>
           
           {boat.amenities && (
-            <TabsContent value="amenities" className="mt-4">
-              <div className="grid grid-cols-2 gap-3">
+            <TabsContent value="amenities" className="mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {boat.amenities.map((amenity, index) => {
                   const IconComponent = amenity.icon;
                   return (
-                    <div key={index} className="flex items-center space-x-2">
-                      <IconComponent className="h-4 w-4 text-gold" />
-                      <span className="text-sm text-muted-foreground">{amenity.name}</span>
+                    <div key={index} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                      <IconComponent className="h-5 w-5 text-gold" />
+                      <span className="text-foreground">{amenity.name}</span>
                     </div>
                   );
                 })}
@@ -130,26 +156,28 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           )}
           
           {boat.seasonalPricing && (
-            <TabsContent value="pricing" className="mt-4">
-              <div className="space-y-3">
-                <h5 className="font-semibold text-primary">Seasonal Pricing</h5>
-                {Object.entries(boat.seasonalPricing).map(([season, price], index) => (
-                  <div key={index} className="flex justify-between items-center py-2 border-b border-border/50">
-                    <span className="text-sm text-muted-foreground">{season}</span>
-                    <span className="text-sm font-semibold text-primary">{price}</span>
-                  </div>
-                ))}
+            <TabsContent value="pricing" className="mt-6">
+              <div className="space-y-4">
+                <h5 className="font-semibold text-primary text-lg">Seasonal Pricing</h5>
+                <div className="space-y-3">
+                  {Object.entries(boat.seasonalPricing).map(([season, price], index) => (
+                    <div key={index} className="flex justify-between items-center py-3 px-4 border border-border/50 rounded-lg">
+                      <span className="text-foreground font-medium">{season}</span>
+                      <span className="text-lg font-bold text-primary">{price}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </TabsContent>
           )}
           
           {boat.specifications && (
-            <TabsContent value="specs" className="mt-4">
-              <div className="space-y-3">
+            <TabsContent value="specs" className="mt-6">
+              <div className="space-y-4">
                 {Object.entries(boat.specifications).map(([spec, value], index) => (
-                  <div key={index} className="flex justify-between items-center py-2 border-b border-border/50">
-                    <span className="text-sm text-muted-foreground capitalize">{spec.replace(/([A-Z])/g, ' $1')}</span>
-                    <span className="text-sm font-semibold text-primary">{value}</span>
+                  <div key={index} className="flex justify-between items-center py-3 px-4 border border-border/50 rounded-lg">
+                    <span className="text-foreground font-medium capitalize">{spec.replace(/([A-Z])/g, ' $1')}</span>
+                    <span className="text-lg font-semibold text-primary">{value}</span>
                   </div>
                 ))}
               </div>
@@ -157,12 +185,12 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           )}
           
           {boat.recreationExtras && (
-            <TabsContent value="extras" className="mt-4">
-              <div className="grid grid-cols-2 gap-2">
+            <TabsContent value="extras" className="mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {boat.recreationExtras.map((extra, index) => (
-                  <div key={index} className="flex items-center space-x-2">
+                  <div key={index} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors">
                     <div className="w-2 h-2 bg-gold rounded-full"></div>
-                    <span className="text-sm text-muted-foreground">{extra}</span>
+                    <span className="text-foreground">{extra}</span>
                   </div>
                 ))}
               </div>
@@ -171,21 +199,21 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         </Tabs>
       )}
 
-      {/* Booking Actions */}
-      <div className="space-y-3 pt-4 border-t">
+      {/* Enhanced Booking Actions */}
+      <div className="space-y-4 pt-6 border-t border-border">
         <Button 
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-14 text-lg"
           onClick={() => handleWhatsAppBooking(boat.name)}
         >
-          <MessageCircle className="w-4 h-4 mr-2" />
+          <MessageCircle className="w-5 h-5 mr-3" />
           Book by WhatsApp
         </Button>
-        <div className="grid grid-cols-2 gap-3">
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
+        <div className="grid grid-cols-2 gap-4">
+          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-12 font-semibold">
             <Phone className="w-4 h-4 mr-2" />
             Call Now
           </Button>
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5">
+          <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-12 font-semibold">
             <Calendar className="w-4 h-4 mr-2" />
             Check Availability
           </Button>
@@ -197,13 +225,11 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side="bottom" className="h-[90vh] overflow-y-auto">
-          <SheetHeader>
-            <SheetTitle className="text-left">{boat.name}</SheetTitle>
+        <SheetContent side="bottom" className="h-[95vh] overflow-y-auto p-6">
+          <SheetHeader className="mb-6">
+            <SheetTitle className="text-left text-2xl font-serif">{boat.name}</SheetTitle>
           </SheetHeader>
-          <div className="mt-6">
-            <ModalContent />
-          </div>
+          <ModalContent />
         </SheetContent>
       </Sheet>
     );
@@ -211,9 +237,9 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{boat.name}</DialogTitle>
+      <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto p-8">
+        <DialogHeader className="mb-6">
+          <DialogTitle className="text-3xl font-serif">{boat.name}</DialogTitle>
         </DialogHeader>
         <ModalContent />
       </DialogContent>
