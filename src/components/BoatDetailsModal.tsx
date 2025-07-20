@@ -43,7 +43,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
   if (!boat) return null;
 
-
   const MobileModalContent = () => (
     <div className="space-y-4">
       {/* Compact Image Gallery */}
@@ -81,11 +80,9 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             <p className="text-sm text-muted-foreground">{boat.type}</p>
           </div>
           <div className="text-right">
-            <span className="text-lg font-bold text-primary">{boat.hourlyRate}</span>
+            <span className="text-lg font-bold text-primary">{boat.hourlyRate.replace('From ', '')}</span>
           </div>
         </div>
-        
-        <p className="text-foreground text-sm leading-relaxed line-clamp-3">{boat.description}</p>
       </div>
 
       {/* Compact Key Stats */}
@@ -103,7 +100,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         <div className="text-center">
           <Clock className="h-5 w-5 text-gold mx-auto mb-1" />
           <p className="text-xs text-muted-foreground">Rate</p>
-          <p className="font-semibold text-xs text-foreground">{boat.hourlyRate}</p>
+          <p className="font-semibold text-xs text-foreground">{boat.hourlyRate.replace('From ', '')}</p>
         </div>
       </div>
 
@@ -164,9 +161,9 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           
           {boat.recreationExtras && (
             <TabsContent value="extras" className="mt-4">
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-2 gap-1">
                 {boat.recreationExtras.map((extra, index) => (
-                  <div key={index} className="flex items-center space-x-2 p-2 rounded-lg hover:bg-muted/50 transition-colors">
+                  <div key={index} className="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-muted/50 transition-colors">
                     <div className="w-1.5 h-1.5 bg-gold rounded-full"></div>
                     <span className="text-foreground text-xs">{extra}</span>
                   </div>
