@@ -204,11 +204,31 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
             <p className="text-lg text-muted-foreground mb-2">{boat.type}</p>
             <p className="text-base text-muted-foreground">Available for hire in Sydney</p>
           </div>
+          
+          {/* Desktop Action Buttons - Inline with boat name */}
+          <div className="hidden md:flex items-center space-x-3 flex-shrink-0">
+            <a href="tel:+61401494414">
+              <Button 
+                variant="outline" 
+                className="border-green-600 text-green-600 hover:bg-green-50 h-11 px-4 font-semibold"
+              >
+                <Phone className="w-4 h-4 mr-2 text-green-600" />
+                Call: 0401 494 414
+              </Button>
+            </a>
+            <Button 
+              variant="outline" 
+              className="border-blue-600 text-blue-600 hover:bg-blue-50 h-11 px-4 font-semibold"
+            >
+              <Calendar className="w-4 h-4 mr-2 text-blue-600" />
+              Instant Quote
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Action Buttons - Moved up */}
-      <div className="grid grid-cols-2 gap-4">
+      {/* Mobile Action Buttons - Separate section */}
+      <div className="md:hidden grid grid-cols-2 gap-4">
         <a href="tel:+61401494414">
           <Button 
             variant="outline" 
