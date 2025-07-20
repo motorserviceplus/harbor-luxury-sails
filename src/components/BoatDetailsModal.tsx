@@ -325,7 +325,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent 
           side="bottom" 
-          className="max-h-[85dvh] min-h-[50dvh] overflow-y-auto p-4 pt-6 pb-safe rounded-t-xl border-t border-border/20 backdrop-blur-md"
+          className="max-h-[92dvh] min-h-[50dvh] overflow-y-auto p-4 pb-safe rounded-t-xl border-t border-border/20 backdrop-blur-md"
         >
           <SheetHeader className="mb-4">
             <SheetTitle className="text-left text-xl font-serif">{boat.name}</SheetTitle>
