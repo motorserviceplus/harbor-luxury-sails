@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { MessageCircle, Calendar, Users, Waves, Clock, DollarSign, Phone, Mail, X } from 'lucide-react';
+import { Calendar, Users, Waves, Clock, DollarSign, Phone, Mail, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Boat {
@@ -43,12 +43,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
   if (!boat) return null;
 
-  const handleWhatsAppBooking = (boatName: string) => {
-    const message = `Hi! I'm interested in booking the ${boatName} for a charter. Could you please provide more details about availability and packages?`;
-    const phoneNumber = '61400000000';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
 
   const MobileModalContent = () => (
     <div className="space-y-4">
@@ -185,13 +179,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
       {/* Compact Booking Actions */}
       <div className="space-y-3 pt-4 border-t border-border">
-        <Button 
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-12"
-          onClick={() => handleWhatsAppBooking(boat.name)}
-        >
-          <MessageCircle className="w-4 h-4 mr-2" />
-          Book by WhatsApp
-        </Button>
         <div className="grid grid-cols-2 gap-2">
           <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-10 text-sm">
             <Phone className="w-3 h-3 mr-1" />
@@ -357,13 +344,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
       {/* Enhanced Booking Actions */}
       <div className="space-y-4 pt-6 border-t border-border">
-        <Button 
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-14 text-lg"
-          onClick={() => handleWhatsAppBooking(boat.name)}
-        >
-          <MessageCircle className="w-5 h-5 mr-3" />
-          Book by WhatsApp
-        </Button>
         <div className="grid grid-cols-2 gap-4">
           <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 h-12 font-semibold">
             <Phone className="w-4 h-4 mr-2" />
