@@ -230,12 +230,10 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           <div className="text-right">
             <div className="flex items-center space-x-2 mb-2">
               <DollarSign className="h-5 w-5 text-gold" />
-              <span className="text-xl font-bold text-primary">{boat.hourlyRate}</span>
+              <span className="text-xl font-bold text-primary">{boat.hourlyRate.replace('From ', '')}</span>
             </div>
           </div>
         </div>
-        
-        <p className="text-foreground text-lg leading-relaxed">{boat.description}</p>
       </div>
 
       {/* Enhanced Key Stats */}
@@ -264,7 +262,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Rate</p>
-            <p className="font-semibold text-foreground">{boat.hourlyRate}</p>
+            <p className="font-semibold text-foreground">{boat.hourlyRate.replace('From ', '')}</p>
           </div>
         </div>
       </div>
