@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -156,18 +157,18 @@ const Fleet = () => {
                     <p className="font-sans text-sm text-muted-foreground">Hire in Sydney</p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 md:gap-4 mb-4">
-                    <div className="flex items-center space-x-1 md:space-x-2">
-                      <Users className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" />
-                      <span className="font-sans text-xs md:text-sm text-muted-foreground leading-tight">{boat.capacity}</span>
+                  <div className="grid grid-cols-3 gap-4 md:gap-6 mb-4">
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                      <Users className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
+                      <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.capacity}</span>
                     </div>
-                    <div className="flex items-center space-x-1 md:space-x-2">
-                      <Waves className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" />
-                      <span className="font-sans text-xs md:text-sm text-muted-foreground leading-tight">{boat.length}</span>
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                      <Waves className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
+                      <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.length}</span>
                     </div>
-                    <div className="flex items-center space-x-1 md:space-x-2">
-                      <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-gold flex-shrink-0" />
-                      <span className="font-sans text-xs md:text-sm text-muted-foreground leading-tight">{boat.hourlyRate}</span>
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                      <DollarSign className="h-5 w-5 md:h-6 md:w-6 text-gold flex-shrink-0" />
+                      <span className="font-sans text-sm md:text-base text-muted-foreground leading-tight">{boat.hourlyRate}</span>
                     </div>
                   </div>
 
