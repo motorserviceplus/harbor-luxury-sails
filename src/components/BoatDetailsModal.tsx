@@ -356,11 +356,8 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto p-8">
-        <DialogHeader className="mb-6">
-          <DialogTitle className="text-3xl font-serif">{boat.name}</DialogTitle>
-          <DialogDescription className="text-lg text-muted-foreground">
-            Luxury yacht charter details and booking information
-          </DialogDescription>
+        <DialogHeader className="mb-2">
+          <DialogTitle className="sr-only">{boat.name}</DialogTitle>
         </DialogHeader>
         <ModalContent />
       </DialogContent>
