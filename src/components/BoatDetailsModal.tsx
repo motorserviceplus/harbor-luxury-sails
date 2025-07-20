@@ -341,11 +341,8 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           side="bottom" 
           className="max-h-[92dvh] min-h-[50dvh] overflow-y-auto p-4 pb-safe rounded-t-xl border-t border-border/20 backdrop-blur-md"
         >
-          <SheetHeader className="mb-4">
+          <SheetHeader className="mb-2">
             <SheetTitle className="text-left text-xl font-serif">{boat.name}</SheetTitle>
-            <SheetDescription className="text-left text-sm text-muted-foreground">
-              Luxury yacht charter details and booking information
-            </SheetDescription>
           </SheetHeader>
           <MobileModalContent />
         </SheetContent>
