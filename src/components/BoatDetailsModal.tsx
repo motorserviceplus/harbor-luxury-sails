@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
@@ -98,7 +99,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         <div className="text-center">
           <Clock className="h-5 w-5 text-gold mx-auto mb-1" />
           <p className="text-xs text-muted-foreground">Rate</p>
-          <p className="font-semibold text-xs text-foreground">{boat.hourlyRate.replace('From ', '')}</p>
+          <p className="font-semibold text-xs text-foreground">{boat.hourlyRate}</p>
         </div>
       </div>
 
@@ -216,7 +217,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           <div className="text-right">
             <div className="flex items-center space-x-2 mb-2">
               <DollarSign className="h-5 w-5 text-gold" />
-              <span className="text-xl font-bold text-primary">{boat.hourlyRate.replace('From ', '')}</span>
+              <span className="text-xl font-bold text-primary">{boat.hourlyRate}</span>
             </div>
           </div>
         </div>
@@ -248,7 +249,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Rate</p>
-            <p className="font-semibold text-foreground">{boat.hourlyRate.replace('From ', '')}</p>
+            <p className="font-semibold text-foreground">{boat.hourlyRate}</p>
           </div>
         </div>
       </div>

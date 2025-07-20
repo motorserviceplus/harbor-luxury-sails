@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -33,9 +34,9 @@ const Fleet = () => {
       model: '98',
       hourlyRate: 'From $2,000/hr',
       seasonalPricing: {
-        'Apr-Sep': '$2,000/hr',
-        'Jan-Mar & Oct': '$2,250/hr', 
-        'Nov-Dec': '$2,500/hr'
+        'Apr-Sep': 'From $2,000/hr',
+        'Jan-Mar & Oct': 'From $2,250/hr', 
+        'Nov-Dec': 'From $2,500/hr'
       },
       description: 'A striking 98ft Azimut superyacht, Seven Star is one of the most iconic private charters on Sydney Harbour. With capacity for up to 80 guests, it features luxurious finishes, indoor and outdoor entertaining spaces, and a full-service crew. Perfect for weddings, VIP parties, or corporate events. Enjoy its rooftop entertaining area, jacuzzi, dance floor, and more.',
       images: [
@@ -92,7 +93,7 @@ const Fleet = () => {
       type: 'Performance Luxury Yacht',
       capacity: '1-36 Guests',
       length: '87 feet',
-      hourlyRate: '$1650/hr',
+      hourlyRate: 'From $1,650/hr',
       description: 'A sophisticated performance yacht combining speed with luxury, ideal for intimate gatherings and corporate events with contemporary styling.',
       images: [
         yachtInteriorImage,
@@ -167,7 +168,7 @@ const Fleet = () => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <DollarSign className="h-6 w-6 text-gold" />
-                      <span className="font-sans text-sm text-muted-foreground">From {boat.hourlyRate.replace('From ', '')}</span>
+                      <span className="font-sans text-sm text-muted-foreground">{boat.hourlyRate}</span>
                     </div>
                   </div>
 
