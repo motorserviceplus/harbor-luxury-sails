@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Users, Waves, DollarSign, MessageCircle, Eye } from 'lucide-react';
+import { Users, Waves, DollarSign, Eye } from 'lucide-react';
 import { Bath, Utensils, Sparkles, Bed, Music, Star } from 'lucide-react';
 import BoatDetailsModal from '@/components/BoatDetailsModal';
 import sevenStarMain from '@/assets/seven-star-main.jpg';
@@ -104,12 +104,6 @@ const Fleet = () => {
     }
   ];
 
-  const handleWhatsAppBooking = (boatName: string) => {
-    const message = `Hi! I'm interested in booking the ${boatName} for a charter. Could you please provide more details about availability and packages?`;
-    const phoneNumber = '61400000000';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
 
   const handleViewDetails = (boat: any) => {
     setSelectedBoat(boat);
@@ -185,13 +179,6 @@ const Fleet = () => {
 
                   <div className="space-y-3">
                     <Button 
-                      className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-12"
-                      onClick={() => handleWhatsAppBooking(boat.name)}
-                    >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Book by WhatsApp
-                    </Button>
-                    <Button 
                       variant="outline" 
                       className="w-full border-primary text-primary hover:bg-primary/5 font-semibold h-12"
                       onClick={() => handleViewDetails(boat)}
@@ -218,10 +205,8 @@ const Fleet = () => {
           </p>
           <Button 
             className="bg-gold hover:bg-gold-light text-primary font-semibold px-8 py-3 text-lg"
-            onClick={() => handleWhatsAppBooking('fleet consultation')}
           >
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Chat with Our Team
+            Contact Our Team
           </Button>
         </div>
       </section>
