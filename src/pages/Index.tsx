@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,6 +10,7 @@ import yachtFleetImage from '@/assets/yacht-fleet.jpg';
 import yachtExperienceImage from '@/assets/yacht-experience.jpg';
 
 const Index = () => {
+  const { t } = useTranslation();
   const testimonials = [
     {
       name: 'Sarah & James Wellington',
@@ -33,18 +35,18 @@ const Index = () => {
   const features = [
     {
       icon: <Crown className="h-10 w-10 text-electric" />,
-      title: 'Elite Fleet',
-      description: 'Cutting-edge vessels with premium amenities and sleek modern design'
+      title: t('home.features.luxury.title'),
+      description: t('home.features.luxury.description')
     },
     {
       icon: <Shield className="h-10 w-10 text-electric" />,
-      title: 'Premium Service',
-      description: 'Professional crews delivering unmatched luxury experiences'
+      title: t('home.features.service.title'),
+      description: t('home.features.service.description')
     },
     {
       icon: <Zap className="h-10 w-10 text-electric" />,
-      title: 'Instant Booking',
-      description: 'Quick, seamless reservations with real-time availability'
+      title: t('home.features.experience.title'),
+      description: t('home.features.experience.description')
     }
   ];
 
@@ -68,13 +70,11 @@ const Index = () => {
           </div>
           
           <h1 className="font-display text-6xl md:text-8xl font-bold mb-8 leading-tight text-glow">
-            Next-Level<br />
-            <span className="text-electric">Harbour</span> Luxury
+            {t('home.hero.title')}
           </h1>
           
           <p className="font-sans text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-muted-foreground">
-            Experience Sydney Harbour like never before. Modern vessels, premium service, 
-            and unforgettable moments on Australia's most iconic waterway.
+            {t('home.hero.subtitle')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -110,7 +110,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="text-center mb-20">
             <h2 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Why Choose <span className="text-electric">Elite</span>
+              {t('home.features.title')}
             </h2>
             <p className="font-sans text-xl text-muted-foreground max-w-3xl mx-auto">
               Experience the difference that modern luxury and innovation make
@@ -142,10 +142,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Our <span className="text-electric">Elite</span> Fleet
+              {t('home.fleet.title')}
             </h2>
             <p className="font-sans text-xl text-muted-foreground max-w-3xl mx-auto">
-              State-of-the-art vessels designed for the ultimate harbour experience
+              {t('home.fleet.subtitle')}
             </p>
           </div>
 
@@ -180,7 +180,7 @@ const Index = () => {
                 className="gradient-electric hover-glow text-background font-semibold px-8 py-4 text-lg h-auto"
               >
                 <Link to="/fleet">
-                  Explore Fleet
+                  {t('home.fleet.cta')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -269,10 +269,10 @@ const Index = () => {
       <section className="py-32 gradient-electric text-center relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="font-display text-5xl md:text-6xl font-bold text-background mb-8">
-            Your Elite Experience Awaits
+            {t('home.cta.title')}
           </h2>
           <p className="font-sans text-xl text-background/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Contact us today to begin planning your unforgettable Sydney Harbour celebration
+            {t('home.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
@@ -280,7 +280,7 @@ const Index = () => {
               className="bg-background hover:bg-background/90 text-electric font-semibold px-10 py-6 text-lg h-auto shadow-glow"
             >
               <Link to="/contact">
-                Start Planning
+                {t('home.cta.button')}
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Link>
             </Button>

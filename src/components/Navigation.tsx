@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Anchor } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Our Fleet', path: '/fleet' },
-    { name: 'Packages', path: '/packages' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.fleet'), path: '/fleet' },
+    { name: t('nav.packages'), path: '/packages' },
+    { name: t('nav.gallery'), path: '/gallery' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.contact'), path: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -31,7 +34,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -45,8 +48,9 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+            <LanguageSwitcher />
             <Button className="bg-gradient-to-r from-gold-dark to-gold hover:from-gold to-gold-light text-primary font-semibold px-6">
-              Enquire Now
+              {t('nav.enquire')}
             </Button>
           </div>
 
@@ -81,8 +85,11 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
+              <div className="pt-2 border-t border-border">
+                <LanguageSwitcher />
+              </div>
               <Button className="w-full bg-gradient-to-r from-gold-dark to-gold hover:from-gold to-gold-light text-primary font-semibold">
-                Enquire Now
+                {t('nav.enquire')}
               </Button>
             </div>
           </div>
