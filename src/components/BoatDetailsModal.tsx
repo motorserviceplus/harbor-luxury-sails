@@ -363,7 +363,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
         <JotformModal 
           isOpen={isJotformOpen}
           onClose={() => setIsJotformOpen(false)}
-          selectedBoat={boat.name}
         />
       </>
     );
@@ -383,7 +382,6 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
       <JotformModal 
         isOpen={isJotformOpen}
         onClose={() => setIsJotformOpen(false)}
-        selectedBoat={boat.name}
       />
     </>
   );

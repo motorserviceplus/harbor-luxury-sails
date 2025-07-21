@@ -8,23 +8,11 @@ import { useIsMobile } from '@/hooks/use-mobile';
 interface JotformModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedBoat?: string;
 }
 
-const JotformModal: React.FC<JotformModalProps> = ({ isOpen, onClose, selectedBoat }) => {
+const JotformModal: React.FC<JotformModalProps> = ({ isOpen, onClose }) => {
   const isMobile = useIsMobile();
-  
-  // Construct the Jotform URL with pre-selected boat
-  const getJotformUrl = () => {
-    const baseUrl = 'https://form.jotform.com/252008164262045';
-    if (selectedBoat) {
-      const encodedBoat = encodeURIComponent(selectedBoat);
-      return `${baseUrl}?selectPreferredVessel=${encodedBoat}`;
-    }
-    return baseUrl;
-  };
-
-  const jotformUrl = getJotformUrl();
+  const jotformUrl = 'https://form.jotform.com/252008164262045';
 
   const JotformContent = () => (
     <div className="w-full h-full">
@@ -33,11 +21,6 @@ const JotformModal: React.FC<JotformModalProps> = ({ isOpen, onClose, selectedBo
           <h2 className="font-serif text-2xl font-bold text-primary mb-2">
             Get Your Instant Quote
           </h2>
-          {selectedBoat && (
-            <p className="text-sm text-muted-foreground">
-              Pre-selected vessel: <span className="font-medium text-primary">{selectedBoat}</span>
-            </p>
-          )}
         </div>
       </div>
       
