@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -35,6 +36,22 @@ const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJotformOpen, setIsJotformOpen] = useState(false);
+
+  // Debug log all imported images
+  console.log('Image imports check:', {
+    privacy1: privacy1,
+    privacy2: privacy2,
+    privacy3: privacy3,
+    privacy4: privacy4,
+    privacy5: privacy5,
+    aqa1: aqa1,
+    aqa2: aqa2,
+    aqa3: aqa3,
+    aqa4: aqa4,
+    aqa5: aqa5,
+    aqa6: aqa6,
+    aqa7: aqa7
+  });
 
   const boats = [
     {
@@ -208,6 +225,14 @@ const Fleet = () => {
     setIsJotformOpen(true);
   };
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    console.error('Image failed to load:', e.currentTarget.src);
+  };
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    console.log('Image loaded successfully:', e.currentTarget.src);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -235,6 +260,8 @@ const Fleet = () => {
                     alt={boat.name}
                     className="w-full h-56 md:h-64 object-cover cursor-pointer hover:opacity-90 transition-opacity duration-200"
                     onClick={() => handleViewDetails(boat)}
+                    onError={handleImageError}
+                    onLoad={handleImageLoad}
                   />
                   
                   {boat.highlight && (
