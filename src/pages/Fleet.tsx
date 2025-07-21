@@ -87,7 +87,7 @@ const Fleet = () => {
       }
     },
     {
-      name: 'MY Privacy',
+      name: 'Privacy',
       type: '87 ft Luxury Warren Sports Yacht',
       capacity: '1-36 Guests',
       length: '87 feet',
@@ -96,7 +96,7 @@ const Fleet = () => {
         'Jan-Oct (Standard Season)': 'From $1,650/hr',
         'Nov-Dec (Peak Season)': 'From $1,850/hr'
       },
-      description: 'MY Privacy is a stunning 87ft Warren Sports Yacht that combines luxury with performance on Sydney Harbour. This sophisticated vessel features contemporary styling, panoramic windows, and spacious entertaining areas both indoor and outdoor. With accommodation for up to 36 guests and 4 beautifully appointed bedrooms, it\'s perfect for intimate celebrations, corporate events, or luxury day charters. The yacht boasts premium amenities including a retractable sunroof, full bar, and aft deck entertaining area, all serviced by a professional crew.',
+      description: 'Privacy is a stunning 87ft Warren Sports Yacht that combines luxury with performance on Sydney Harbour. This sophisticated vessel features contemporary styling, panoramic windows, and spacious entertaining areas both indoor and outdoor. With accommodation for up to 36 guests and 4 beautifully appointed bedrooms, it\'s perfect for intimate celebrations, corporate events, or luxury day charters. The yacht boasts premium amenities including a retractable sunroof, full bar, and aft deck entertaining area, all serviced by a professional crew.',
       images: [
         'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8115-1-scaled.jpg',
         'https://aocruises.com.au/wp-content/uploads/2024/05/DSC_8368-min.jpg',
@@ -134,7 +134,6 @@ const Fleet = () => {
       }
     }
   ];
-
 
   const handleViewDetails = (boat: any) => {
     setSelectedBoat(boat);
