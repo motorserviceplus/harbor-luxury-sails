@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -139,7 +138,7 @@ const Fleet = () => {
     {
       name: 'AQA',
       type: '87 ft Luxury Warren Sports Yacht',
-      capacity: '1-36 Guests',
+      capacity: '1-65 Guests',
       length: '92 feet',
       hourlyRate: 'From $1,950/hr',
       seasonalPricing: {
@@ -147,7 +146,7 @@ const Fleet = () => {
         'Jan-Mar & Oct': 'From $2,050/hr',
         'Nov-Dec': 'From $2,250/hr'
       },
-      description: 'AQA is a magnificent 92ft Warren Sports Yacht that epitomizes luxury and elegance on Sydney Harbour. This stunning vessel features a spacious dance floor, sky lounge with bar, and multiple entertaining areas perfect for celebrations and corporate events. With capacity for up to 36 guests, AQA offers premium amenities including a swim platform, sun deck with lounges, and full bar service. The yacht combines sophisticated design with modern comfort, making it ideal for weddings, parties, and exclusive harbour experiences.',
+      description: 'AQA is a magnificent 92ft Warren Sports Yacht that epitomizes luxury and elegance on Sydney Harbour. This stunning vessel features a spacious dance floor, sky lounge with bar, and multiple entertaining areas perfect for celebrations and corporate events. With capacity for up to 65 guests, AQA offers premium amenities including a swim platform, sun deck with lounges, and full bar service. The yacht combines sophisticated design with modern comfort, making it ideal for weddings, parties, and exclusive harbour experiences.',
       images: [
         'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8316-1-scaled.jpg',
         'https://www.bucksafloat.com/wp-content/uploads/AQA-BOAT-HIRE-SYDNEY-015.jpg',
@@ -157,7 +156,6 @@ const Fleet = () => {
         'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-87-min.jpg',
         'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-71-min.jpg'
       ],
-      highlight: 'Dance Floor & Sky Lounge',
       amenities: [
         { name: 'Shower', icon: Bath },
         { name: 'Toilets', icon: Bath },
