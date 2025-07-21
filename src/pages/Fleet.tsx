@@ -8,7 +8,7 @@ import { Users, Waves, DollarSign, Eye } from 'lucide-react';
 import { Bath, Utensils, Sparkles, Bed, Music, Star, Wind } from 'lucide-react';
 import BoatDetailsModal from '@/components/BoatDetailsModal';
 import JotformModal from '@/components/JotformModal';
-import sevenStarMain from '@/assets/seven-star-main.jpg';
+import sevenStarMain from '@/assets/seven-star-1.jpg';
 import sevenStar1 from '@/assets/seven-star-1.jpg';
 import sevenStar4 from '@/assets/seven-star-4.jpg';
 import sevenStar5 from '@/assets/seven-star-5.jpg';
