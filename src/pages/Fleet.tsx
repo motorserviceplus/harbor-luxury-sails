@@ -18,6 +18,18 @@ import sevenStar12 from '@/assets/seven-star-12.jpg';
 import sevenStar16 from '@/assets/seven-star-16.jpg';
 import sevenStar19 from '@/assets/seven-star-19.jpg';
 import sevenStar21 from '@/assets/seven-star-21.jpg';
+import privacy1 from '@/assets/privacy-1.jpg';
+import privacy2 from '@/assets/privacy-2.jpg';
+import privacy3 from '@/assets/privacy-3.jpg';
+import privacy4 from '@/assets/privacy-4.jpg';
+import privacy5 from '@/assets/privacy-5.jpg';
+import aqa1 from '@/assets/aqa-1.jpg';
+import aqa2 from '@/assets/aqa-2.jpg';
+import aqa3 from '@/assets/aqa-3.jpg';
+import aqa4 from '@/assets/aqa-4.jpg';
+import aqa5 from '@/assets/aqa-5.jpg';
+import aqa6 from '@/assets/aqa-6.jpg';
+import aqa7 from '@/assets/aqa-7.jpg';
 
 const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
@@ -100,11 +112,11 @@ const Fleet = () => {
       },
       description: 'Privacy is a stunning 87ft Warren Sports Yacht that combines luxury with performance on Sydney Harbour. This sophisticated vessel features contemporary styling, panoramic windows, and spacious entertaining areas both indoor and outdoor. With accommodation for up to 36 guests and 4 beautifully appointed bedrooms, it\'s perfect for intimate celebrations, corporate events, or luxury day charters. The yacht boasts premium amenities including a retractable sunroof, full bar, and aft deck entertaining area, all serviced by a professional crew.',
       images: [
-        'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8115-1-scaled.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/05/DSC_8368-min.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-148-min.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8361-scaled.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/05/MK107793-1-min.jpg'
+        privacy1,
+        privacy2,
+        privacy3,
+        privacy4,
+        privacy5
       ],
       highlight: 'Luxury Sports Yacht',
       amenities: [
@@ -148,13 +160,13 @@ const Fleet = () => {
       },
       description: 'AQA is a magnificent 92ft Warren Sports Yacht that epitomizes luxury and elegance on Sydney Harbour. This stunning vessel features a spacious dance floor, sky lounge with bar, and multiple entertaining areas perfect for celebrations and corporate events. With capacity for up to 65 guests, AQA offers premium amenities including a swim platform, sun deck with lounges, and full bar service. The yacht combines sophisticated design with modern comfort, making it ideal for weddings, parties, and exclusive harbour experiences.',
       images: [
-        'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8316-1-scaled.jpg',
-        'https://www.bucksafloat.com/wp-content/uploads/AQA-BOAT-HIRE-SYDNEY-015.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/08/all-occasions-cruises-111-scaled.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-103-min-scaled.jpg',
-        'https://www.bucksafloat.com/wp-content/uploads/AQA-BOAT-HIRE-SYDNEY-001.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-87-min.jpg',
-        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-71-min.jpg'
+        aqa1,
+        aqa2,
+        aqa3,
+        aqa4,
+        aqa5,
+        aqa6,
+        aqa7
       ],
       amenities: [
         { name: 'Shower', icon: Bath },
