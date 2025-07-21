@@ -19,39 +19,12 @@ import sevenStar12 from '@/assets/seven-star-12.jpg';
 import sevenStar16 from '@/assets/seven-star-16.jpg';
 import sevenStar19 from '@/assets/seven-star-19.jpg';
 import sevenStar21 from '@/assets/seven-star-21.jpg';
-import privacy1 from '@/assets/privacy-1.jpg';
-import privacy2 from '@/assets/privacy-2.jpg';
-import privacy3 from '@/assets/privacy-3.jpg';
-import privacy4 from '@/assets/privacy-4.jpg';
-import privacy5 from '@/assets/privacy-5.jpg';
-import aqa1 from '@/assets/aqa-1.jpg';
-import aqa2 from '@/assets/aqa-2.jpg';
-import aqa3 from '@/assets/aqa-3.jpg';
-import aqa4 from '@/assets/aqa-4.jpg';
-import aqa5 from '@/assets/aqa-5.jpg';
-import aqa6 from '@/assets/aqa-6.jpg';
-import aqa7 from '@/assets/aqa-7.jpg';
 
 const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJotformOpen, setIsJotformOpen] = useState(false);
 
-  // Debug log all imported images
-  console.log('Image imports check:', {
-    privacy1: privacy1,
-    privacy2: privacy2,
-    privacy3: privacy3,
-    privacy4: privacy4,
-    privacy5: privacy5,
-    aqa1: aqa1,
-    aqa2: aqa2,
-    aqa3: aqa3,
-    aqa4: aqa4,
-    aqa5: aqa5,
-    aqa6: aqa6,
-    aqa7: aqa7
-  });
 
   const boats = [
     {
@@ -108,103 +81,6 @@ const Fleet = () => {
         'Paddleboards',
         'Magicians',
         'Waterslide',
-        'Drinks Packages'
-      ],
-      specifications: {
-        bathrooms: 3,
-        bedrooms: 3,
-        fuel: 'Included',
-        crew: 'Captain & Crew Included'
-      }
-    },
-    {
-      name: 'Privacy',
-      type: '87 ft Luxury Warren Sports Yacht',
-      capacity: '1-36 Guests',
-      length: '87 feet',
-      hourlyRate: 'From $1,650/hr',
-      seasonalPricing: {
-        'Jan-Oct (Standard Season)': 'From $1,650/hr',
-        'Nov-Dec (Peak Season)': 'From $1,850/hr'
-      },
-      description: 'Privacy is a stunning 87ft Warren Sports Yacht that combines luxury with performance on Sydney Harbour. This sophisticated vessel features contemporary styling, panoramic windows, and spacious entertaining areas both indoor and outdoor. With accommodation for up to 36 guests and 4 beautifully appointed bedrooms, it\'s perfect for intimate celebrations, corporate events, or luxury day charters. The yacht boasts premium amenities including a retractable sunroof, full bar, and aft deck entertaining area, all serviced by a professional crew.',
-      images: [
-        privacy1,
-        privacy2,
-        privacy3,
-        privacy4,
-        privacy5
-      ],
-      highlight: 'Luxury Sports Yacht',
-      amenities: [
-        { name: 'Shower', icon: Bath },
-        { name: 'Toilets', icon: Bath },
-        { name: 'iPod Docking', icon: Music },
-        { name: 'Speakers', icon: Music },
-        { name: 'Bedrooms (4 total)', icon: Bed },
-        { name: 'Ensuite Bathrooms', icon: Bath },
-        { name: 'Full Bar', icon: Utensils },
-        { name: 'Air Conditioning', icon: Sparkles },
-        { name: 'Retractable Sunroof', icon: Wind },
-        { name: 'Panoramic Windows', icon: Star },
-        { name: 'Spacious Open-Plan Lounge', icon: Star },
-        { name: 'Aft Deck Entertaining Area', icon: Star }
-      ],
-      recreationExtras: [
-        'Full professional crew (captain + crew included)',
-        'Food & catering packages',
-        'DJ services',
-        'Paddleboards',
-        'Drinks packages'
-      ],
-      specifications: {
-        bathrooms: 4,
-        bedrooms: 4,
-        fuel: 'Included',
-        crew: 'Captain & Crew Included'
-      }
-    },
-    {
-      name: 'AQA',
-      type: '87 ft Luxury Warren Sports Yacht',
-      capacity: '1-65 Guests',
-      length: '92 feet',
-      hourlyRate: 'From $1,950/hr',
-      seasonalPricing: {
-        'Apr-Oct': 'From $1,950/hr',
-        'Jan-Mar & Oct': 'From $2,050/hr',
-        'Nov-Dec': 'From $2,250/hr'
-      },
-      description: 'AQA is a magnificent 92ft Warren Sports Yacht that epitomizes luxury and elegance on Sydney Harbour. This stunning vessel features a spacious dance floor, sky lounge with bar, and multiple entertaining areas perfect for celebrations and corporate events. With capacity for up to 65 guests, AQA offers premium amenities including a swim platform, sun deck with lounges, and full bar service. The yacht combines sophisticated design with modern comfort, making it ideal for weddings, parties, and exclusive harbour experiences.',
-      images: [
-        aqa1,
-        aqa2,
-        aqa3,
-        aqa4,
-        aqa5,
-        aqa6,
-        aqa7
-      ],
-      amenities: [
-        { name: 'Shower', icon: Bath },
-        { name: 'Toilets', icon: Bath },
-        { name: 'iPod Docking', icon: Music },
-        { name: 'Speakers', icon: Music },
-        { name: 'Bedrooms', icon: Bed },
-        { name: 'Ensuite', icon: Bath },
-        { name: 'Bar', icon: Utensils },
-        { name: 'Dance Floor', icon: Music },
-        { name: 'Air Conditioning', icon: Sparkles },
-        { name: 'Swim Platform', icon: Star },
-        { name: 'Sun Deck with Lounges', icon: Star },
-        { name: 'Sky Lounge with Bar', icon: Star },
-        { name: 'BYO Available', icon: Utensils }
-      ],
-      recreationExtras: [
-        'Food & Catering',
-        'DJ',
-        'Paddleboards',
-        'Lily Pad',
         'Drinks Packages'
       ],
       specifications: {
