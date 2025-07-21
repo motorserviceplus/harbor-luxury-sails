@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -131,6 +132,57 @@ const Fleet = () => {
       specifications: {
         bathrooms: 4,
         bedrooms: 4,
+        fuel: 'Included',
+        crew: 'Captain & Crew Included'
+      }
+    },
+    {
+      name: 'AQA',
+      type: '87 ft Luxury Warren Sports Yacht',
+      capacity: '1-36 Guests',
+      length: '92 feet',
+      hourlyRate: 'From $1,950/hr',
+      seasonalPricing: {
+        'Apr-Oct': 'From $1,950/hr',
+        'Jan-Mar & Oct': 'From $2,050/hr',
+        'Nov-Dec': 'From $2,250/hr'
+      },
+      description: 'AQA is a magnificent 92ft Warren Sports Yacht that epitomizes luxury and elegance on Sydney Harbour. This stunning vessel features a spacious dance floor, sky lounge with bar, and multiple entertaining areas perfect for celebrations and corporate events. With capacity for up to 36 guests, AQA offers premium amenities including a swim platform, sun deck with lounges, and full bar service. The yacht combines sophisticated design with modern comfort, making it ideal for weddings, parties, and exclusive harbour experiences.',
+      images: [
+        'https://aocruises.com.au/wp-content/uploads/2024/08/DSC_8316-1-scaled.jpg',
+        'https://www.bucksafloat.com/wp-content/uploads/AQA-BOAT-HIRE-SYDNEY-015.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/08/all-occasions-cruises-111-scaled.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-103-min-scaled.jpg',
+        'https://www.bucksafloat.com/wp-content/uploads/AQA-BOAT-HIRE-SYDNEY-001.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-87-min.jpg',
+        'https://aocruises.com.au/wp-content/uploads/2024/05/all-occasions-cruises-71-min.jpg'
+      ],
+      highlight: 'Dance Floor & Sky Lounge',
+      amenities: [
+        { name: 'Shower', icon: Bath },
+        { name: 'Toilets', icon: Bath },
+        { name: 'iPod Docking', icon: Music },
+        { name: 'Speakers', icon: Music },
+        { name: 'Bedrooms', icon: Bed },
+        { name: 'Ensuite', icon: Bath },
+        { name: 'Bar', icon: Utensils },
+        { name: 'Dance Floor', icon: Music },
+        { name: 'Air Conditioning', icon: Sparkles },
+        { name: 'Swim Platform', icon: Star },
+        { name: 'Sun Deck with Lounges', icon: Star },
+        { name: 'Sky Lounge with Bar', icon: Star },
+        { name: 'BYO Available', icon: Utensils }
+      ],
+      recreationExtras: [
+        'Food & Catering',
+        'DJ',
+        'Paddleboards',
+        'Lily Pad',
+        'Drinks Packages'
+      ],
+      specifications: {
+        bathrooms: 3,
+        bedrooms: 3,
         fuel: 'Included',
         crew: 'Captain & Crew Included'
       }
