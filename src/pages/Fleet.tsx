@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -24,7 +23,6 @@ const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJotformOpen, setIsJotformOpen] = useState(false);
-
 
   const boats = [
     {
@@ -86,6 +84,110 @@ const Fleet = () => {
       specifications: {
         bathrooms: 3,
         bedrooms: 3,
+        fuel: 'Included',
+        crew: 'Captain & Crew Included'
+      }
+    },
+    {
+      name: 'Privacy',
+      type: '65ft Motor Yacht',
+      capacity: '1-30 Guests',
+      length: '65 feet',
+      make: 'Motor',
+      model: '65',
+      hourlyRate: 'From $1,200/hr',
+      seasonalPricing: {
+        'Apr-Sep': 'From $1,200/hr',
+        'Jan-Mar & Oct': 'From $1,350/hr',
+        'Nov-Dec': 'From $1,500/hr'
+      },
+      description: 'Privacy is a stunning 65ft motor yacht perfect for intimate gatherings and corporate events. With capacity for up to 30 guests, it offers elegant interiors, spacious outdoor areas, and professional crew service. Features include a flybridge, swim platform, and luxurious salon area.',
+      images: [
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      highlight: 'Intimate Luxury',
+      amenities: [
+        { name: 'Shower', icon: Bath },
+        { name: 'Toilets', icon: Bath },
+        { name: 'Fridge', icon: Utensils },
+        { name: 'Air Conditioning', icon: Sparkles },
+        { name: 'Bedrooms (2)', icon: Bed },
+        { name: 'Flybridge', icon: Star },
+        { name: 'Swim Platform', icon: Sparkles },
+        { name: 'Bar', icon: Utensils },
+        { name: 'TV', icon: Music },
+        { name: 'Sound System', icon: Music },
+        { name: 'Cups & Ice', icon: Utensils },
+        { name: 'BYO Friendly', icon: Utensils },
+        { name: 'Salon Area', icon: Star }
+      ],
+      recreationExtras: [
+        'Food & Catering',
+        'DJ',
+        'Paddleboards',
+        'Snorkeling Gear',
+        'Drinks Packages',
+        'Photography'
+      ],
+      specifications: {
+        bathrooms: 2,
+        bedrooms: 2,
+        fuel: 'Included',
+        crew: 'Captain & Crew Included'
+      }
+    },
+    {
+      name: 'AQA',
+      type: '55ft Luxury Cruiser',
+      capacity: '1-25 Guests',
+      length: '55 feet',
+      make: 'Luxury',
+      model: '55',
+      hourlyRate: 'From $900/hr',
+      seasonalPricing: {
+        'Apr-Sep': 'From $900/hr',
+        'Jan-Mar & Oct': 'From $1,050/hr',
+        'Nov-Dec': 'From $1,200/hr'
+      },
+      description: 'AQA is a beautiful 55ft luxury cruiser ideal for smaller groups seeking elegance and comfort. With capacity for up to 25 guests, it features modern amenities, comfortable seating areas, and panoramic views of Sydney Harbour. Perfect for birthday parties, anniversaries, or business entertainment.',
+      images: [
+        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1551361415-577e830401ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      highlight: 'Modern Elegance',
+      amenities: [
+        { name: 'Shower', icon: Bath },
+        { name: 'Toilets', icon: Bath },
+        { name: 'Fridge', icon: Utensils },
+        { name: 'Air Conditioning', icon: Sparkles },
+        { name: 'Bedroom (1)', icon: Bed },
+        { name: 'Outdoor Deck', icon: Star },
+        { name: 'Comfortable Seating', icon: Sparkles },
+        { name: 'Bar Area', icon: Utensils },
+        { name: 'Sound System', icon: Music },
+        { name: 'Cups & Ice', icon: Utensils },
+        { name: 'BYO Friendly', icon: Utensils },
+        { name: 'Panoramic Views', icon: Star }
+      ],
+      recreationExtras: [
+        'Food & Catering',
+        'DJ',
+        'Paddleboards',
+        'Snorkeling Gear',
+        'Drinks Packages',
+        'Photography',
+        'Fishing Equipment'
+      ],
+      specifications: {
+        bathrooms: 1,
+        bedrooms: 1,
         fuel: 'Included',
         crew: 'Captain & Crew Included'
       }
