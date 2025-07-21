@@ -19,11 +19,6 @@ import sevenStar12 from '@/assets/seven-star-12.jpg';
 import sevenStar16 from '@/assets/seven-star-16.jpg';
 import sevenStar19 from '@/assets/seven-star-19.jpg';
 import sevenStar21 from '@/assets/seven-star-21.jpg';
-import privacy1 from '@/assets/privacy-1.jpg';
-import privacy2 from '@/assets/privacy-2.jpg';
-import privacy3 from '@/assets/privacy-3.jpg';
-import privacy4 from '@/assets/privacy-4.jpg';
-import privacy5 from '@/assets/privacy-5.jpg';
 
 const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
@@ -109,11 +104,11 @@ const Fleet = () => {
       },
       description: 'Privacy is a stunning 65ft motor yacht perfect for intimate gatherings and corporate events. With capacity for up to 30 guests, it offers elegant interiors, spacious outdoor areas, and professional crew service. Features include a flybridge, swim platform, and luxurious salon area.',
       images: [
-        privacy1,
-        privacy2,
-        privacy3,
-        privacy4,
-        privacy5
+        'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
       ],
       highlight: 'Intimate Luxury',
       amenities: [
