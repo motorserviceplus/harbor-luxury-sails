@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, Users, Waves, Clock, DollarSign, Phone, Mail, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import JotformModal from '@/components/JotformModal';
 
 interface Boat {
   name: string;
@@ -40,8 +41,13 @@ interface BoatDetailsModalProps {
 
 const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClose }) => {
   const isMobile = useIsMobile();
+  const [isJotformOpen, setIsJotformOpen] = React.useState(false);
 
   if (!boat) return null;
+
+  const handleInstantQuote = () => {
+    setIsJotformOpen(true);
+  };
 
   const MobileModalContent = () => (
     <div className="space-y-4">
@@ -85,7 +91,10 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
                 <Phone className="w-4 h-4" />
               </Button>
             </a>
-            <Button className="bg-blue-900 hover:bg-blue-800 text-white h-10 px-3 text-xs">
+            <Button 
+              onClick={handleInstantQuote}
+              className="bg-blue-900 hover:bg-blue-800 text-white h-10 px-3 text-xs"
+            >
               <Calendar className="w-3 h-3 mr-1" />
               Instant Quote
             </Button>
@@ -217,6 +226,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
               </Button>
             </a>
             <Button 
+              onClick={handleInstantQuote}
               variant="outline" 
               className="border-blue-600 text-blue-600 hover:bg-blue-50 h-11 px-4 font-semibold"
             >
@@ -239,6 +249,7 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
           </Button>
         </a>
         <Button 
+          onClick={handleInstantQuote}
           variant="outline" 
           className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 h-12 font-semibold"
         >
@@ -336,29 +347,45 @@ const BoatDetailsModal: React.FC<BoatDetailsModalProps> = ({ boat, isOpen, onClo
 
   if (isMobile) {
     return (
-      <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent 
-          side="bottom" 
-          className="max-h-[92dvh] min-h-[50dvh] overflow-y-auto p-4 pb-safe rounded-t-xl border-t border-border/20 backdrop-blur-md"
-        >
-          <SheetHeader className="mb-4">
-            <SheetTitle className="sr-only">{boat.name}</SheetTitle>
-          </SheetHeader>
-          <MobileModalContent />
-        </SheetContent>
-      </Sheet>
+      <>
+        <Sheet open={isOpen} onOpenChange={onClose}>
+          <SheetContent 
+            side="bottom" 
+            className="max-h-[92dvh] min-h-[50dvh] overflow-y-auto p-4 pb-safe rounded-t-xl border-t border-border/20 backdrop-blur-md"
+          >
+            <SheetHeader className="mb-4">
+              <SheetTitle className="sr-only">{boat.name}</SheetTitle>
+            </SheetHeader>
+            <MobileModalContent />
+          </SheetContent>
+        </Sheet>
+        
+        <JotformModal 
+          isOpen={isJotformOpen}
+          onClose={() => setIsJotformOpen(false)}
+          selectedBoat={boat.name}
+        />
+      </>
     );
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto p-8">
-        <DialogHeader className="mb-2">
-          <DialogTitle className="sr-only">{boat.name}</DialogTitle>
-        </DialogHeader>
-        <ModalContent />
-      </DialogContent>
-    </Dialog>
+    <>
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto p-8">
+          <DialogHeader className="mb-2">
+            <DialogTitle className="sr-only">{boat.name}</DialogTitle>
+          </DialogHeader>
+          <ModalContent />
+        </DialogContent>
+      </Dialog>
+      
+      <JotformModal 
+        isOpen={isJotformOpen}
+        onClose={() => setIsJotformOpen(false)}
+        selectedBoat={boat.name}
+      />
+    </>
   );
 };
 

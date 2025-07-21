@@ -6,6 +6,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Users, Waves, DollarSign, Eye } from 'lucide-react';
 import { Bath, Utensils, Sparkles, Bed, Music, Star, Wind } from 'lucide-react';
 import BoatDetailsModal from '@/components/BoatDetailsModal';
+import JotformModal from '@/components/JotformModal';
 import sevenStarMain from '@/assets/seven-star-main.jpg';
 import sevenStar1 from '@/assets/seven-star-1.jpg';
 import sevenStar4 from '@/assets/seven-star-4.jpg';
@@ -21,6 +22,7 @@ import sevenStar21 from '@/assets/seven-star-21.jpg';
 const Fleet = () => {
   const [selectedBoat, setSelectedBoat] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isJotformOpen, setIsJotformOpen] = useState(false);
 
   const boats = [
     {
@@ -140,6 +142,10 @@ const Fleet = () => {
     setIsModalOpen(true);
   };
 
+  const handleInstantQuote = () => {
+    setIsJotformOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -154,7 +160,6 @@ const Fleet = () => {
           </p>
         </div>
       </section>
-
 
       {/* Enhanced Fleet Grid */}
       <section className="pb-20 px-1 md:px-4">
@@ -224,24 +229,30 @@ const Fleet = () => {
       <section className="py-20 bg-gradient-to-r from-primary to-primary-light text-center">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-4xl font-bold text-primary-foreground mb-6">
-            Need Help Choosing?
+            Ready to Set Sail?
           </h2>
           <p className="font-sans text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Our experienced team can recommend the perfect vessel for your occasion and help you plan the ultimate Sydney Harbour experience.
+            Get an instant quote for your perfect Sydney Harbour experience. Choose your vessel and let us create an unforgettable journey.
           </p>
           <Button 
+            onClick={handleInstantQuote}
             className="bg-gold hover:bg-gold-light text-primary font-semibold px-8 py-3 text-lg"
           >
-            Contact Our Team
+            Get Instant Quote
           </Button>
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Modals */}
       <BoatDetailsModal 
         boat={selectedBoat}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+      />
+      
+      <JotformModal 
+        isOpen={isJotformOpen}
+        onClose={() => setIsJotformOpen(false)}
       />
     </div>
   );

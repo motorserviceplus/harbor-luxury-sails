@@ -5,11 +5,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Phone, Mail, MapPin, Clock, Send, Star } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Star, Zap } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import JotformModal from '@/components/JotformModal';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isJotformOpen, setIsJotformOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,6 +42,10 @@ const Contact = () => {
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleInstantQuote = () => {
+    setIsJotformOpen(true);
   };
 
   const occasions = [
@@ -95,13 +101,36 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* Quick Action Buttons */}
+      <section className="pb-8 px-4">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <Button 
+              onClick={handleInstantQuote}
+              className="bg-gradient-to-r from-gold-dark to-gold hover:from-gold to-gold-light text-primary font-semibold py-4 text-lg h-auto"
+            >
+              <Zap className="w-5 h-5 mr-2" />
+              Get Instant Quote
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/5 font-semibold py-4 text-lg h-auto"
+              onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <Send className="w-5 h-5 mr-2" />
+              Detailed Enquiry
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form & Info */}
       <section className="pb-20 px-4">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="shadow-luxury">
+              <Card className="shadow-luxury" id="contact-form">
                 <CardContent className="p-8">
                   <div className="flex items-center space-x-3 mb-8">
                     <Star className="h-6 w-6 text-gold" />
@@ -339,6 +368,12 @@ const Contact = () => {
           </Button>
         </div>
       </section>
+
+      {/* Jotform Modal */}
+      <JotformModal 
+        isOpen={isJotformOpen}
+        onClose={() => setIsJotformOpen(false)}
+      />
     </div>
   );
 };
